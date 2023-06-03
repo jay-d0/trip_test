@@ -1,7 +1,8 @@
+import React from 'react';
 import Guide from "./Guide";
 import "./css/Character.css"
 
-function Character() {
+export default function Character() {
   return (
     <div>
       <Guide name="A" style="fast" img_url="www.naver.com" />
@@ -10,5 +11,3 @@ function Character() {
     </div>
   );
 }
-
-export default Character;
