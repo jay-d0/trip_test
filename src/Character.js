@@ -20,6 +20,7 @@ function Character() {
       ))}
     </div>
   );
+
 }
 
 export default Character;
