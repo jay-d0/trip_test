@@ -1,27 +1,9 @@
 import React from "react";
 import "./css/Airport.css";
-import './css/Home.css';
 import airportImage from './icons/샤를드골.png'
 import Input from "./Input";
 import { useParams } from "react-router-dom";
 
-// export default function Airport(){
-//     const {character} = useParams();
-
-//     return(
-//         <div className="home-container">
-//             <div className="background-color"></div>
-//             <img src= {airportImage} alt="airport" className="airport"/>
-            
-//             <div className="guide_saying">
-//                 <p>샤를 드골 공항에 도착했습니다. 무엇을 하고 싶으신가요?</p>
-//                 <br/>
-//                 <br/>
-//                 <Input/>
-//             </div>
-//         </div>
-//     )
-// }
 export default function Airport() {
     const { character } = useParams();
   
@@ -41,7 +23,7 @@ export default function Airport() {
           <p>샤를 드골 공항에 도착했습니다. 무엇을 하고 싶으신가요?</p>
           <br />
           <br />
-          <Input/>
+          <Input className = "input" />
         </div>
       </div>
     );

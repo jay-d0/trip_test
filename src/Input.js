@@ -1,4 +1,5 @@
 import React, {useState}from "react";
+import "./index"
 
 function Input() {
     const [text, setText] = useState("")
@@ -6,10 +7,10 @@ function Input() {
         setText(e.target.value);
     }
     return (
-        <div>
+        <div className="input">
             {text}
             <br/>
-        <input onChange={onChange} value={text} />
+        <input onChange={onChange} value={text} className="input"/>
         </div>
     )
 }
