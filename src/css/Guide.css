@@ -7,3 +7,15 @@
     width: 120px;
     height: 80px;
 }
+
+.guide_name{
+    font-family: 'Mplus 1p Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    text-decoration-line: none;
+    color: #000;
+}
+.guide_name :visited{
+    color: black;
+}

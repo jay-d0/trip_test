@@ -3,4 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+}
+.guide{
+    text-decoration-line: none;
+    color: #000;
+}
+.guide :visited{
+    color: black;
 }

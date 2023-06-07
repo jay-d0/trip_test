@@ -38,6 +38,7 @@
 
 .selectedCharacter{
     position: absolute;
-    left: 2%;
+    width: 200px;
+    left: 1%;
     top: 60%;
 }
