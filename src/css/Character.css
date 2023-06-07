@@ -3,9 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 30%;
-    left: 20%;
+    min-height: 100vh;
 }
 .guide{
     text-decoration-line: none;
