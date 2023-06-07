@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Guide from './Guide';
 import './App.css';
 import './css/Character.css';
+import './css/Home.css';
 
 function Character() {
   const characters = [
@@ -12,12 +13,14 @@ function Character() {
   ];
 
   return (
+    <div className="background-color">
     <div className="many_guides">
       {characters.map((character) => (
         <Link key={character.name} to={`/Map/${character.name}`} className='guide'>
           <Guide name={character.name} style={character.style} img_url={character.img_url} />
         </Link>
       ))}
+    </div>
     </div>
   );
 
