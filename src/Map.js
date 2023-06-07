@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet-providers';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +10,7 @@ import markerIcon from './icons/location-pin.png';
 
 function Map() {
   const { character } = useParams();
+  const navigate = useNavigate();
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -60,11 +61,18 @@ function Map() {
       marker.closePopup();
     };
 
+    // To aiprort.js
+    const handleClick = () => {
+      // Navigate to the Map page with the selected character
+      navigate(`/Map/${character}/airport`);
+    };
+
     // Add mouseover and mouseout event listeners to markers
     parisMarker.on('mouseover', onMouseOver);
     parisMarker.on('mouseout', onMouseOut);
     tokyoMarker.on('mouseover', onMouseOver);
     tokyoMarker.on('mouseout', onMouseOut);
+    parisMarker.on('click', handleClick);
 
     // Clean up the map instance when the component is unmounted
     return () => {
