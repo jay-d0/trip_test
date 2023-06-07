@@ -82,7 +82,7 @@ function Map() {
 
   return (
     <div className="map-wrapper">
-      <h1 className="map-title">{character}님, 여행할 도시를 선택해 주세요</h1>
+      <h1 className="map-title">{character}님, 여행할 도시를 선택해 주세요.</h1>
       <div id="map" className="map-container" ref={mapRef}></div>
     </div>
   );
