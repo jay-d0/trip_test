@@ -2,10 +2,15 @@ import React from "react";
 import "./css/Airport.css";
 import airportImage from './icons/샤를드골.png'
 import Input from "./Input";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function Airport() {
     const { character } = useParams();
+    const navigate = useNavigate();
+
+    const playVideo = () => {
+      navigate(`/Map/:character/airport/video`)
+    }
   
     const characters = [
       { name: '민성우', style: '먹는 것에 돈을 아끼지 않는다.', img_url: 'https://w7.pngwing.com/pngs/390/806/png-transparent-rilakkuma-kakaotalk-kakao-friends-south-korea-kakaofriends-sticker-desktop-wallpaper-snout-thumbnail.png' },
@@ -24,6 +29,7 @@ export default function Airport() {
           <br />
           <br />
           <Input className = "input" />
+          <button onClick={playVideo}>Video</button>
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import Home from './Home';
 import Character from './Character';
 import Map from './Map';
 import Airport from './Airport';
+import Video from './Video'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Character" element={<Character />} />
         <Route path="/Map/:character" element={<Map />} />
         <Route path="/Map/:character/airport" element={<Airport />} />
+        <Route path="/Map/:character/airport/video" element={<Video />}/>
       </Routes>
     </div>
   );
