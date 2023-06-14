@@ -10,8 +10,6 @@ const VideoPlayer = ({ title, vodPlaylistId }) => {
   const playList = [
 
     { index: 1, url: process.env.PUBLIC_URL + '/videos/louvre-museum.mp4', startTime: 1, endTime: 5 }
-
-    // Add more videos with their respective start and end times
   ];
 
   const handleProgress = (progress) => {
