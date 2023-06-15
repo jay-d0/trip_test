@@ -7,7 +7,7 @@ import Map from './Map';
 import Airport from './Airport';
 import ChatScreen from './ChatScreen';
 import Options from './Options';
-import Video from './Video';
+import VideoPlayer from './VideoPlayer';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/map/:character" element={<Map />} />
         <Route path="/map/:character/airport" element={<Airport />} />
         <Route path="/map/:character/options" element={<Options />} />
-        <Route path="/:character/video/:option" element={<Video />} />
+        <Route path="/:character/video/:option" element={<VideoPlayer />} />
         <Route path="/chat" element={<ChatScreen />} />
       </Routes>
     </div>
