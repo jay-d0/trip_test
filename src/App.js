@@ -6,7 +6,7 @@ import Character from './Character';
 import Map from './Map';
 import Airport from './Airport';
 import ChatScreen from './ChatScreen';
-import Options from "./Options";
+import Options from './Options';
 import Video from './Video';
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Character" element={<Character />} />
-        <Route path="/Map/:character" element={<Map />} />
-        <Route path="/Map/:character/airport" element={<Airport />} />
-        <Route path="/" element={<ChatScreen />} />
-        <Route path="/Map/:character/options" element={<Options />} />
-        <Route path="/Map/:character/airport/video" element={<Video />}/>
+        <Route path="/character" element={<Character />} />
+        <Route path="/map/:character" element={<Map />} />
+        <Route path="/map/:character/airport" element={<Airport />} />
+        <Route path="/map/:character/options" element={<Options />} />
+        <Route path="/:character/video/:option" element={<Video />} />
+        <Route path="/chat" element={<ChatScreen />} />
       </Routes>
     </div>
   );

@@ -17,7 +17,7 @@ const ChatScreen = ({ character, onTextChange }) => {
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
 
-    // Send newMessage to the backend
+    // newMessage를 백엔드로
 
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setQuestionIndex((prevIndex) => prevIndex + 1);
@@ -33,7 +33,7 @@ const ChatScreen = ({ character, onTextChange }) => {
 
   const handleNext = () => {
     console.log("다음 button clicked");
-    navigate("/options");
+    navigate(`/Map/${encodeURIComponent(character)}/options`);
   };
 
   return (
