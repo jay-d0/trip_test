@@ -1,27 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player/lazy';
+import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import './index.css';
 
 const VideoPlayer = () => {
-  const location = useLocation();
-  const option = location.pathname.split('/').pop(); // Extract the option (현재 1, 2, 3) from the URL
   const [playIndex, setPlayIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const playerRef = useRef();
+  const location = useLocation();
 
   const playList = [
-    { index: 1, url: process.env.PUBLIC_URL + '/videos/louvre-museum.mp4', startTime: 1, endTime: 5 },
-    { index: 2, url: process.env.PUBLIC_URL + '/videos/arc-de-triomphe.mp4', startTime: 1, endTime: 5 },
-    { index: 3, url: process.env.PUBLIC_URL + '/videos/centre-pompidu.mp4', startTime: 1, endTime: 5 },
+    { option: 'louvre-museum', url: process.env.PUBLIC_URL + '/videos/louvre-museum.mp4', startTime: 1, endTime: 5 },
+    { option: 'arc-de-triomphe', url: process.env.PUBLIC_URL + '/videos/arc-de-triomphe.mp4', startTime: 1, endTime: 5 },
+    { option: 'centre-pompidu', url: process.env.PUBLIC_URL + '/videos/centre-pompidu.mp4', startTime: 1, endTime: 5 },
+    // Add more options here...
   ];
 
   useEffect(() => {
-    const optionIndex = playList.findIndex((video) => video.index === Number(option));
+    const option = location.pathname.split('/').pop();
+    const optionIndex = playList.findIndex((video) => video.option === option);
     if (optionIndex !== -1) {
       setPlayIndex(optionIndex);
     }
-  }, [option, playList]);
+  }, [location.pathname, playList]);
 
   const handleProgress = (progress) => {
     const currentVideo = playList[playIndex];
@@ -40,21 +42,23 @@ const VideoPlayer = () => {
   if (playList === null) return <p>Loading...</p>;
 
   return (
-    <div className="video-player-container">
-      <ReactPlayer
-        ref={playerRef}
-        url={playList[playIndex].url}
-        playing={isPlaying}
-        controls={false}
-        muted
-        progressInterval={1000}
-        onProgress={handleProgress}
-        pip={true}
-        width={'100%'}
-        height={'100%'}
-        onStart={() => playerRef.current.seekTo(playList[playIndex].startTime, 'seconds')}
-      />
-    </div>
+    <>
+      <div className="video-player-container">
+        <ReactPlayer
+          ref={playerRef}
+          url={playList[playIndex].url}
+          playing={isPlaying}
+          controls={false}
+          muted
+          progressInterval={1000}
+          onProgress={handleProgress}
+          pip={true}
+          width={'100%'}
+          height={'100%'}
+          onStart={() => playerRef.current.seekTo(playList[playIndex].startTime, 'seconds')}
+        />
+      </div>
+    </>
   );
 };
 
