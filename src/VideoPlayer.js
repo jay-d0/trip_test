@@ -1,7 +1,6 @@
 import ReactPlayer from 'react-player/lazy';
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
 import './index.css';
 
 const VideoPlayer = () => {
@@ -14,7 +13,7 @@ const VideoPlayer = () => {
     { option: 'louvre-museum', url: process.env.PUBLIC_URL + '/videos/louvre-museum.mp4', startTime: 1, endTime: 5 },
     { option: 'arc-de-triomphe', url: process.env.PUBLIC_URL + '/videos/arc-de-triomphe.mp4', startTime: 1, endTime: 5 },
     { option: 'centre-pompidu', url: process.env.PUBLIC_URL + '/videos/centre-pompidu.mp4', startTime: 1, endTime: 5 },
-    // Add more options here...
+    // 장소 추가
   ];
 
   useEffect(() => {
@@ -28,14 +27,8 @@ const VideoPlayer = () => {
   const handleProgress = (progress) => {
     const currentVideo = playList[playIndex];
     if (progress.playedSeconds >= currentVideo.endTime) {
-      const nextVideoIndex = playIndex + 1;
-      if (nextVideoIndex < playList.length) {
-        const nextVideo = playList[nextVideoIndex];
-        playerRef.current.seekTo(nextVideo.startTime, 'seconds');
-        setPlayIndex(nextVideoIndex);
-      } else {
-        setIsPlaying(false);
-      }
+      setIsPlaying(false); // Stop the playback of the current video
+      playerRef.current.seekTo(currentVideo.startTime, 'seconds'); // Seek back to the start of the current video
     }
   };
 
