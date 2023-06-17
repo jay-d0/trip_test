@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import "../../css/Airport.css";
 import airportImage from "../../icons/샤를드골.png";
-import ChatScreen from "../Chat/ChatScreen";
+import ChatAirport from "./ChatAirport";
 import { useParams, Link } from "react-router-dom";
 
 const Airport = () => {
   const { character } = useParams();
   const [guideText, setGuideText] = useState("");
-
-  const airportQuestions = [
-    "샤를 드골 공항에 도착했습니다. 무엇을 하고 싶으신가요?",
-    "어떤 음식을 먹고 싶으신가요?",
-    "어떤 커피를 먹고 싶으신가요?",
-  ];
 
   const characters = [
     {
@@ -51,8 +45,7 @@ const Airport = () => {
       />
       <div className="guide_saying">
         <p>{guideText}</p>
-        <ChatScreen
-          questions={airportQuestions}
+        <ChatAirport
           character={character}
           onTextChange={handleTextChange}
         />

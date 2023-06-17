@@ -5,9 +5,9 @@ import Home from './pages/Home/Home';
 import Character from './pages/Character/Character';
 import Map from './pages/Map/Map';
 import Airport from './pages/Airport/Airport';
-import ChatScreen from './pages/Chat/ChatScreen';
+import ChatScreen from './pages/Chat/ChatEat';
 import Options from './pages/Options/Options';
-import VideoPlayer from './pages/Video/VideoEat';
+import VideoPlayer from './pages/Video/VideoPlayer';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character" element={<Character />} />
-        <Route path="/map/:character" element={<Map />} />
-        <Route path="/map/:character/airport" element={<Airport />} />
+        <Route path="/:character/map" element={<Map />} />
+        <Route path="/:character/airport" element={<Airport />} />
         <Route path="/:character/options" element={<Options />} />
         <Route path="/:character/video/:option" element={<VideoPlayer />} />
         <Route path="/chat" element={<ChatScreen />} />

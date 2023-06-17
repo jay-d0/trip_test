@@ -6,9 +6,16 @@
   justify-content: flex-start;
   align-items: center;
   padding: 20px;
-  position: relative;
+  position: absolute;
   z-index: 1;
-  height: 150%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 8px;
+  height: 200px;
+  width: 50%;
+  overflow-y: scroll;
 }
 
 .messages {
@@ -23,15 +30,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute; 
-  top: 50%; 
+  position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%; /* Adjust the width as needed */
 }
 
 .question p {
   font-size: 18px;
   margin-bottom: 10px;
+  width: 100%; /* Set the width to 100% to span the entire container */
 }
 
 /* ChatMessage CSS */
@@ -92,4 +101,3 @@ body {
   position: relative;
   z-index: 0;
 }
-

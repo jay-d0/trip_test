@@ -63,8 +63,7 @@ function Map() {
 
     // To aiprort.js
     const handleClick = () => {
-      // Navigate to the Map page with the selected character
-      navigate(`/Map/${character}/airport`);
+      navigate(`/${character}/airport`);
     };
 
     // Add mouseover and mouseout event listeners to markers

@@ -5,7 +5,7 @@ import ChatInput from "./ChatInput";
 
 import '../../css/ChatScreen.css';
 
-const ChatScreen = ({ character, onTextChange, questions }) => {
+const ChatStay = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -23,7 +23,12 @@ const ChatScreen = ({ character, onTextChange, questions }) => {
     onTextChange(text); // Call the onTextChange prop
   };
 
-  if (questionIndex === questions.length) {
+  const videoStayQuestions = [
+    "다음으로 무엇을 할까요?",
+    "어떤 호텔로 갈까요?",
+  ];
+
+  if (questionIndex === videoStayQuestions.length) {
     onTextChange("");
   }
 
@@ -42,19 +47,19 @@ const ChatScreen = ({ character, onTextChange, questions }) => {
         </div>*/}
 
       {/* 현재 질문 및 input */}
-      {questionIndex < questions.length && (
+      {questionIndex < videoStayQuestions.length && (
         <div className="question">
-          <p>{questions[questionIndex]}</p>
+          <p>{videoStayQuestions[questionIndex]}</p>
           <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
         </div>
       )}
 
       {/* 다음 버튼 */}
-      {questionIndex === questions.length && (
+      {questionIndex === videoStayQuestions.length && (
         <button onClick={handleNext}>다음</button>
       )}
     </div>
   );
 };
 
-export default ChatScreen;
+export default ChatStay;

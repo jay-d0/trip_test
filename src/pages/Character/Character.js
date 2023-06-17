@@ -16,7 +16,7 @@ function Character() {
     <div className="background-color">
     <div className="many_guides">
       {characters.map((character) => (
-        <Link key={character.name} to={`/Map/${character.name}`} className='guide'>
+        <Link key={character.name} to={`/${character.name}/map`} className='guide'>
           <Guide name={character.name} style={character.style} img_url={character.img_url} />
         </Link>
       ))}

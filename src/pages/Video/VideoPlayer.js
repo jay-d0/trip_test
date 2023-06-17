@@ -1,23 +1,19 @@
 import ReactPlayer from 'react-player';
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import ChatScreen from "../Chat/ChatScreen";
+import ChatEat from "../Chat/ChatEat";
+import ChatStay from "../Chat/ChatStay";
+import ChatDo from '../Chat/ChatDo';
 
 import '../../index.css';
 
-const VideoEat = () => {
+const VideoPlayer = () => {
   const [playIndex, setPlayIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const playerRef = useRef();
   const location = useLocation();
   const [showChatScreen, setShowChatScreen] = useState(false);
   const [guideText, setGuideText] = useState("");
-
-  const videoEatQuestions = [
-    "다음으로 무엇을 하고 싶으신가요?",
-    "어떤 음식을 먹고 싶으신가요?",
-    "어떤 메뉴를 먹고 싶으신가요?",
-  ];
 
   const handleTextChange = (text) => {
     setGuideText(text);
@@ -33,6 +29,7 @@ const VideoEat = () => {
     { option: 'centre-pompidu', url: '/videos/centre-pompidu.mp4', startTime: 1, endTime: 5 },
     { option: 'seine-river', url: '/videos/seine-river.mp4', startTime: 1, endTime: 5 },
     // Add more locations and adjust start/end times as needed
+    // 백엔드에서 받아야 함
   ];
 
   useEffect(() => {
@@ -55,7 +52,7 @@ const VideoEat = () => {
   if (playList === null) return <p>Loading...</p>;
 
   return (
-    <>
+    <div ClassName="video-chat-container">
       <div className="video-player-container">
         <ReactPlayer
           ref={playerRef}
@@ -72,17 +69,18 @@ const VideoEat = () => {
         />
       </div>
       {showChatScreen && (
-        <div>
-          <p>{guideText}</p>
-          <ChatScreen
-            questions={videoEatQuestions}
-            character={playList[playIndex].option}
-            onTextChange={handleTextChange}
-          />
+        <div className="chat-screen-overlay">
+          <div className="chat-screen-container">
+            <p>{guideText}</p>
+            <ChatStay
+              character={playList[playIndex].option}
+              onTextChange={handleTextChange} // 여기가 변경되어야 함
+            />
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default VideoEat;
+export default VideoPlayer;
