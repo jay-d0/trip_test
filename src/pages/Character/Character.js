@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Guide from './Guide';
-import './App.css';
-import './css/Character.css';
-import './css/Home.css';
+import '../../App.css';
+import '../../css/Character.css';
+import '../../css/Home.css';
 
 function Character() {
   const characters = [

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import Character from './Character';
-import Map from './Map';
-import Airport from './Airport';
-import ChatScreen from './ChatScreen';
-import Options from './Options';
-import VideoPlayer from './VideoPlayer';
+import Home from './pages/Home/Home';
+import Character from './pages/Character/Character';
+import Map from './pages/Map/Map';
+import Airport from './pages/Airport/Airport';
+import ChatScreen from './pages/Chat/ChatScreen';
+import Options from './pages/Options/Options';
+import VideoPlayer from './pages/Video/VideoEat';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/character" element={<Character />} />
         <Route path="/map/:character" element={<Map />} />
         <Route path="/map/:character/airport" element={<Airport />} />
-        <Route path="/map/:character/options" element={<Options />} />
+        <Route path="/:character/options" element={<Options />} />
         <Route path="/:character/video/:option" element={<VideoPlayer />} />
         <Route path="/chat" element={<ChatScreen />} />
       </Routes>

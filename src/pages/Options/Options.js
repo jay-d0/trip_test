@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import airportImage from "./icons/샤를드골.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import airportImage from "../../icons/샤를드골.png";
 
-import "./css/Options.css";
+import "../../css/Options.css";
 
 const Options = () => {
   const navigate = useNavigate();
@@ -34,13 +33,14 @@ const Options = () => {
     "louvre-museum": "Louvre Museum",
     "arc-de-triomphe": "Arc de Triomphe",
     "centre-pompidu": "Centre Pompidu",
+    "seine-river": "Seine River",
     // option string 및 option button label 추가
   };
 
   const selectedCharacter = characters.find((char) => char.name === character);
 
   const handleOptionClick = (option) => {
-    navigate(`/${selectedCharacter.name}/video/${option}`);
+    navigate(`/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`);
   };
 
   const renderOptions = () => {
@@ -58,17 +58,17 @@ const Options = () => {
   return (
     <div className="options-container">
       <img src={airportImage} alt="airport" className="airport" />
-      <img
-        src={selectedCharacter.img_url}
-        alt={selectedCharacter.name}
-        className="selectedCharacter"
-      />
+      {selectedCharacter && (
+        <img
+          src={selectedCharacter.img_url}
+          alt={selectedCharacter.name}
+          className="selectedCharacter"
+        />
+      )}
       <div className="option-saying">
         <p>가고 싶은 장소를 선택해 주세요.</p>
       </div>
-      <div className="option-buttons">
-        {renderOptions()}
-      </div>
+      <div className="option-buttons">{renderOptions()}</div>
     </div>
   );
 };

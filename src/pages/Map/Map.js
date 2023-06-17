@@ -3,10 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet-providers';
 import 'leaflet/dist/leaflet.css';
-import './css/Map.css';
-import './css/Map_Popup.css';
+import '../../css/Map.css';
+import '../../css/Map_Popup.css';
 
-import markerIcon from './icons/location-pin.png';
+import markerIcon from '../../icons/location-pin.png';
 
 function Map() {
   const { character } = useParams();
