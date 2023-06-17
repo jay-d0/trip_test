@@ -5,7 +5,7 @@ import ChatInput from "./ChatInput";
 
 import '../../css/ChatScreen.css';
 
-const ChatScreen = ({ character, onTextChange }) => {
+const ChatDo = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -62,4 +62,4 @@ const ChatScreen = ({ character, onTextChange }) => {
   );
 };
 
-export default ChatScreen;
+export default ChatDo;
