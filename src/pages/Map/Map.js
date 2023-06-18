@@ -61,7 +61,7 @@ function Map() {
       marker.closePopup();
     };
 
-    // To aiprort.js
+    // To airport.js
     const handleClick = () => {
       navigate(`/${character}/airport`);
     };
