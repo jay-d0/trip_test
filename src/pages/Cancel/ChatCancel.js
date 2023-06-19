@@ -5,7 +5,7 @@ import ChatInput from "../Chat/ChatInput";
 
 import '../../css/ChatScreen.css';
 
-const ChatAirport = ({ character, onTextChange }) => {
+const ChatCancel = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -24,7 +24,8 @@ const ChatAirport = ({ character, onTextChange }) => {
   };
 
   const airportQuestions = [
-    "공항에 도착했습니다. 다음으로 무엇을 할까요?", // 호텔로 이동하는 영상 틀기
+    "호텔의 예약이 취소되었습니다. 다음으로 무엇을 할까요?",
+    "어떤 관광지로 갈까요?",
   ];
 
   if (questionIndex === airportQuestions.length) {
@@ -33,7 +34,7 @@ const ChatAirport = ({ character, onTextChange }) => {
 
   const handleNext = () => {
     console.log("Next button clicked");
-    navigate(`/${encodeURIComponent(character)}/cancel`);
+    navigate(`/${encodeURIComponent(character)}/options`);
   };
 
   return (
@@ -61,4 +62,4 @@ const ChatAirport = ({ character, onTextChange }) => {
   );
 };
 
-export default ChatAirport;
+export default ChatCancel;

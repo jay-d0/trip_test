@@ -49,28 +49,32 @@ const Airport = () => {
   }, [videoEnded]);
 
   return (
-    <div className="home-container">
-      <ReactPlayer
-        url={'/videos/seoul-paris.mp4'}
-        playing={true}
-        controls={false}
-        muted={true}
-        progressInterval={1000}
-        pip={true}
-        width={'100%'}
-        height={'100%'}
-        onEnded={handleVideoEnd}
-      />
-      {videoEnded && characterVisible && (
-        <><div className="selectedCharacter">
-          <img
-            src={selectedCharacter.img_url}
-            alt={selectedCharacter.name} />
-        </div><div className="guide_saying">
-            <p>{guideText}</p>
-            <ChatAirport character={character} onTextChange={handleTextChange} />
-          </div></>
+    <div ClassName="video-chat-container">
+      <div className="home-container">
+        <ReactPlayer
+          url={'/videos/seoul-paris.mp4'}
+          playing={true}
+          controls={false}
+          muted={true}
+          progressInterval={1000}
+          pip={true}
+          width={'100%'}
+          height={'100%'}
+          onEnded={handleVideoEnd}
+        />
+        {videoEnded && characterVisible && (
+          <><div className="selectedCharacter">
+            <img
+              src={selectedCharacter.img_url}
+              alt={selectedCharacter.name} />
+          </div><div className="guide_saying">
+              <p>{guideText}</p>
+              <ChatAirport 
+              character={character} 
+              onTextChange={handleTextChange} />
+            </div></>
       )}
+      </div>
     </div>
   );
 };
