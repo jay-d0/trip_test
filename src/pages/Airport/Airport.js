@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/Airport.css";
-import airportImage from "../../icons/샤를드골.png";
+import ReactPlayer from "react-player";
 import ChatAirport from "./ChatAirport";
 import { useParams, Link } from "react-router-dom";
 
 const Airport = () => {
   const { character } = useParams();
   const [guideText, setGuideText] = useState("");
+  const [videoEnded, setVideoEnded] = useState(false);
+  const [characterVisible, setCharacterVisible] = useState(false);
 
   const characters = [
     {
@@ -35,21 +37,40 @@ const Airport = () => {
     setGuideText(text);
   };
 
+  const handleVideoEnd = () => {
+    setVideoEnded(true);
+  };
+
+  useEffect(() => {
+    if (videoEnded) {
+      setGuideText("Video ended! You can now see the selected character.");
+      setCharacterVisible(true);
+    }
+  }, [videoEnded]);
+
   return (
     <div className="home-container">
-      <img src={airportImage} alt="airport" className="airport" />
-      <img
-        src={selectedCharacter.img_url}
-        alt={selectedCharacter.name}
-        className="selectedCharacter"
+      <ReactPlayer
+        url={'/videos/seoul-paris.mp4'}
+        playing={true}
+        controls={false}
+        muted={true}
+        progressInterval={1000}
+        pip={true}
+        width={'100%'}
+        height={'100%'}
+        onEnded={handleVideoEnd}
       />
-      <div className="guide_saying">
-        <p>{guideText}</p>
-        <ChatAirport
-          character={character}
-          onTextChange={handleTextChange}
-        />
-      </div>
+      {videoEnded && characterVisible && (
+        <><div className="selectedCharacter">
+          <img
+            src={selectedCharacter.img_url}
+            alt={selectedCharacter.name} />
+        </div><div className="guide_saying">
+            <p>{guideText}</p>
+            <ChatAirport character={character} onTextChange={handleTextChange} />
+          </div></>
+      )}
     </div>
   );
 };
