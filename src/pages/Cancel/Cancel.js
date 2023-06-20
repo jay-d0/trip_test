@@ -42,10 +42,10 @@ const Cancel = () => {
 
   useEffect(() => {
     if (videoEnded) {
-      setGuideText("Video ended! You can now see the selected character.");
       setCharacterVisible(true);
     }
   }, [videoEnded]);
+  
   return (
     <div className="video-chat-container">
       <div className="home-container">

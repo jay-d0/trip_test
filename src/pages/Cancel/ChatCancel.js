@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "../Chat/ChatMessage";
 import ChatInput from "../Chat/ChatInput";
+import Options from "../Options/Options";
 
-import '../../css/ChatScreen.css';
+import "../../css/ChatScreen.css";
 
 const ChatCancel = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
+  const [showOptions, setShowOptions] = useState(false);
+  const [showChatScreen, setShowChatScreen] = useState(true);
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
@@ -33,31 +36,44 @@ const ChatCancel = ({ character, onTextChange }) => {
   }
 
   const handleNext = () => {
-    console.log("Next button clicked");
-    navigate(`/${encodeURIComponent(character)}/options`);
+    setShowOptions(true);
+    setShowChatScreen(false);
   };
 
   return (
-    <div className="chat-screen">
-      {/* 메시지 내용 */}
-      {/*<div className="messages">
-        {messages.map((message, index) => (
-          <ChatMessage key={index} message={message} />
-        ))}
-        </div>*/}
+    <div>
+      {/* Hide the chat screen when showChatScreen is false */}
+      {showChatScreen && (
+        <div className="chat-screen">
+          {/* 메시지 내용 */}
+          {/*<div className="messages">
+            {messages.map((message, index) => (
+              <ChatMessage key={index} message={message} />
+            ))}
+          </div>*/}
 
-      {/* 현재 질문 및 input */}
-      {questionIndex < airportQuestions.length && (
-        <div className="question">
-          <p>{airportQuestions[questionIndex]}</p>
-          <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          {/* 현재 질문 및 input */}
+          {questionIndex < airportQuestions.length && (
+            <div className="question">
+              <p>{airportQuestions[questionIndex]}</p>
+              <ChatInput
+                onSendMessage={handleSendMessage}
+                onTextChange={handleTextChange}
+              />
+            </div>
+          )}
+
+          {!showOptions && questionIndex === airportQuestions.length && (
+                  <button 
+                  className="next-button"
+                  onClick={handleNext}>다음</button>
+                )}
+
         </div>
       )}
 
-      {/* 다음 버튼 */}
-      {questionIndex === airportQuestions.length && (
-        <button onClick={handleNext}>다음</button>
-      )}
+      {/* Options 컴포넌트 */}
+      {showOptions && <Options />}
     </div>
   );
 };

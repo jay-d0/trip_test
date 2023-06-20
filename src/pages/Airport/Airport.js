@@ -43,7 +43,6 @@ const Airport = () => {
 
   useEffect(() => {
     if (videoEnded) {
-      setGuideText("Video ended! You can now see the selected character.");
       setCharacterVisible(true);
     }
   }, [videoEnded]);

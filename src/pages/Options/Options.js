@@ -57,14 +57,6 @@ const Options = () => {
 
   return (
     <div className="options-container">
-      <img src={airportImage} alt="airport" className="airport" />
-      {selectedCharacter && (
-        <img
-          src={selectedCharacter.img_url}
-          alt={selectedCharacter.name}
-          className="selectedCharacter"
-        />
-      )}
       <div className="option-saying">
         <p>가고 싶은 장소를 선택해 주세요.</p>
       </div>
