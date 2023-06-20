@@ -1,77 +1,79 @@
 import ReactPlayer from 'react-player';
 import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import ChatCancel from "./ChatCancel";
-
 import '../../index.css';
+import { useParams} from "react-router-dom";
 
 const Cancel = () => {
-  const [playIndex, setPlayIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const playerRef = useRef();
-  const location = useLocation();
-  const [showChatScreen, setShowChatScreen] = useState(false);
+  const { character } = useParams();
   const [guideText, setGuideText] = useState("");
+  const [videoEnded, setVideoEnded] = useState(false);
+  const [characterVisible, setCharacterVisible] = useState(false);
+
+  const characters = [
+    {
+      name: "민성우",
+      style: "먹는 것에 돈을 아끼지 않는다.",
+      img_url:
+        "https://w7.pngwing.com/pngs/390/806/png-transparent-rilakkuma-kakaotalk-kakao-friends-south-korea-kakaofriends-sticker-desktop-wallpaper-snout-thumbnail.png",
+    },
+    {
+      name: "박유찬",
+      style: "박물관과 미술관을 좋아한다.",
+      img_url:
+        "https://e7.pngegg.com/pngimages/982/1017/png-clipart-kakaotalk-kakao-friends-sticker-line-ryan-smiley-sticker.png",
+    },
+    {
+      name: "서우석",
+      style: "현지인들과 어울리기를 좋아한다.",
+      img_url:
+        "https://e7.pngegg.com/pngimages/825/741/png-clipart-kakaotalk-kakao-friends-sticker-iphone-iphone-electronics-smiley.png",
+    },
+  ];
+
+  const selectedCharacter = characters.find((char) => char.name === character);
 
   const handleTextChange = (text) => {
     setGuideText(text);
-    if (text !== "") {
-      setIsPlaying(false);
-      setShowChatScreen(true);
-    }
   };
-
-  const playList = [
-    { option: 'driving', url: '/videos/driving.mp4', startTime: 1, endTime: 14 },
-  ];
+  const handleVideoEnd = () => {
+    setVideoEnded(true);
+  };
 
   useEffect(() => {
-    const option = location.pathname.split('/').pop();
-    const optionIndex = playList.findIndex((video) => video.option === option);
-    if (optionIndex !== -1) {
-      setPlayIndex(optionIndex);
+    if (videoEnded) {
+      setGuideText("Video ended! You can now see the selected character.");
+      setCharacterVisible(true);
     }
-  }, [location.pathname, playList]);
-
-  const handleProgress = (progress) => {
-    const currentVideo = playList[playIndex];
-    if (progress.playedSeconds >= currentVideo.endTime) {
-      setIsPlaying(false);
-      setShowChatScreen(true);
-    }
-  };
-
-  if (playList === null) return <p>Loading...</p>;
+  }, [videoEnded]);
 
   return (
     <div className="video-chat-container">
-      <div className="video-player-container">
+      <div className="home-container">
         <ReactPlayer
-          ref={playerRef}
-          url={process.env.PUBLIC_URL + playList[playIndex].url}
-          playing={isPlaying}
+          url={'/videos/driving.mp4'}
+          playing={true}
           controls={false}
-          muted
+          muted={true}
           progressInterval={1000}
-          onProgress={handleProgress}
           pip={true}
           width={'100%'}
           height={'100%'}
-          onStart={() => playerRef.current.seekTo(playList[playIndex].startTime, 'seconds')}
-          onEnded={() => setIsPlaying(false)} // 1번 재생 후 영상 재생 멈춤
+          onEnded={handleVideoEnd}
         />
-      </div>
-      {showChatScreen && (
-        <div className="chat-screen-overlay">
-          <div className="chat-screen-container">
-            <p>{guideText}</p>
-            <ChatCancel
-              character={playList[playIndex].option}
-              onTextChange={handleTextChange}
-            />
-          </div>
-        </div>
+        {videoEnded && characterVisible && (
+          <><div className="selectedCharacter">
+            <img
+              src={selectedCharacter.img_url}
+              alt={selectedCharacter.name} />
+          </div><div className="guide_saying">
+              <p>{guideText}</p>
+              <ChatCancel 
+              character={character} 
+              onTextChange={handleTextChange} />
+            </div></>
       )}
+      </div>
     </div>
   );
 };

@@ -52,7 +52,7 @@ const VideoPlayer = () => {
   if (playList === null) return <p>Loading...</p>;
 
   return (
-    <div ClassName="video-chat-container">
+    <div className="video-chat-container">
       <div className="video-player-container">
         <ReactPlayer
           ref={playerRef}
