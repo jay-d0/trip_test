@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player';
 import { useState, useRef, useEffect } from 'react';
 import ChatCancel from "./ChatCancel";
-import '../../index.css';
+import '../../css/Cancel.css';
 import { useParams} from "react-router-dom";
 
 const Cancel = () => {

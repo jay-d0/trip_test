@@ -59,7 +59,7 @@ const VideoPlayer = () => {
           url={process.env.PUBLIC_URL + playList[playIndex].url}
           playing={isPlaying}
           controls={false}
-          muted
+          muted={true}
           progressInterval={1000}
           onProgress={handleProgress}
           pip={true}
