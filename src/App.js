@@ -22,7 +22,6 @@ function App() {
         <Route path="/:character/cancel" element={<Cancel />} />
         <Route path="/:character/options" element={<Options />} />
         <Route path="/:character/video/:option" element={<VideoPlayer />} />
-        <Route path="/chat" element={<ChatScreen />} />
       </Routes>
     </div>
   );

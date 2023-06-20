@@ -49,7 +49,7 @@ const Airport = () => {
   }, [videoEnded]);
 
   return (
-    <div ClassName="video-chat-container">
+    <div className="video-chat-container">
       <div className="home-container">
         <ReactPlayer
           url={'/videos/seoul-paris.mp4'}
