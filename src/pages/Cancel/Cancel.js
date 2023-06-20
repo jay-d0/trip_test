@@ -46,7 +46,6 @@ const Cancel = () => {
       setCharacterVisible(true);
     }
   }, [videoEnded]);
-  
   return (
     <div className="video-chat-container">
       <div className="home-container">
