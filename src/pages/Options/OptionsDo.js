@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import airportImage from "../../icons/샤를드골.png";
 
 import "../../css/Options.css";
+import { setOptions } from "leaflet";
 
-const Options = () => {
+const OptionsDo = ({ Do }) => {
   const navigate = useNavigate();
   const { character } = useParams();
 
@@ -29,15 +29,22 @@ const Options = () => {
     },
   ];
 
-  const optionsData = {
-    "louvre-museum": "Louvre Museum",
-    "arc-de-triomphe": "Arc de Triomphe",
-    "centre-pompidu": "Centre Pompidu",
-    "seine-river": "Seine River",
-    // option string 및 option button label 추가
+  const selectedCharacter = characters.find((char) => char.name === character);
+
+  const [optionsData, setOptionsData] = useState({});
+
+  const handleDataUpdate = () => {
+    const unpackedOptions = {};
+    Do.forEach((place) => {
+      unpackedOptions[place.key] = place.title;
+    }); // 'place' 항목의 'key'를 객체의 키로, 'title'을 객체의 값으로 할당
+
+    setOptionsData(unpackedOptions);
   };
 
-  const selectedCharacter = characters.find((char) => char.name === character);
+  useEffect(() => {
+    handleDataUpdate();
+  }, [Do]); // Do 배열이 변경될 때마다 handleDataUpdate 함수 호출, optionsData가 업데이트
 
   const handleOptionClick = (option) => {
     navigate(`/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`);
@@ -65,4 +72,4 @@ const Options = () => {
   );
 };
 
-export default Options;
+export default OptionsDo;

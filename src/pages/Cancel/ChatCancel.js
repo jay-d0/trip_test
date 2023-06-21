@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "../Chat/ChatMessage";
 import ChatInput from "../Chat/ChatInput";
-import Options from "../Options/Options";
+import Options from "../Options/OptionsDo";
 
 import "../../css/ChatScreen.css";
 
@@ -26,12 +26,11 @@ const ChatCancel = ({ character, onTextChange }) => {
     onTextChange(text); // Call the onTextChange prop
   };
 
-  const airportQuestions = [
-    "호텔의 예약이 취소되었습니다. 다음으로 무엇을 할까요?",
-    "어떤 관광지로 갈까요?",
+  const cancelQuestions = [
+    "호텔의 예약이 취소되었습니다. 다음으로 무엇을 할까요?"
   ];
 
-  if (questionIndex === airportQuestions.length) {
+  if (questionIndex === cancelQuestions.length) {
     onTextChange("");
   }
 
@@ -53,9 +52,9 @@ const ChatCancel = ({ character, onTextChange }) => {
           </div>*/}
 
           {/* 현재 질문 및 input */}
-          {questionIndex < airportQuestions.length && (
+          {questionIndex < cancelQuestions.length && (
             <div className="question">
-              <p>{airportQuestions[questionIndex]}</p>
+              <p>{cancelQuestions[questionIndex]}</p>
               <ChatInput
                 onSendMessage={handleSendMessage}
                 onTextChange={handleTextChange}
@@ -63,7 +62,7 @@ const ChatCancel = ({ character, onTextChange }) => {
             </div>
           )}
 
-          {!showOptions && questionIndex === airportQuestions.length && (
+          {!showOptions && questionIndex === cancelQuestions.length && (
                   <button 
                   className="next-button"
                   onClick={handleNext}>다음</button>

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "./ChatMessage";
-import ChatInput from "./ChatInput";
+import ChatEatInput from "./ChatEatInput";
 
 import '../../css/ChatScreen.css';
+import communicate from "../../communicate";
 
 const ChatEat = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
+  const [A, setA] = useState([]);
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
@@ -24,7 +26,6 @@ const ChatEat = ({ character, onTextChange }) => {
   };
 
   const videoEatQuestions = [
-    "다음으로 무엇을 할까요?",
     "어떤 음식점으로 갈까요?",
     "어떤 메뉴를 먹고 싶으신가요?",
   ];
@@ -35,7 +36,7 @@ const ChatEat = ({ character, onTextChange }) => {
 
   const handleNext = () => {
     console.log("Next button clicked");
-    navigate(`/${encodeURIComponent(character)}/options`);
+    navigate(`/${encodeURIComponent(character)}/options/eat`);
   };
 
   return (
@@ -51,7 +52,7 @@ const ChatEat = ({ character, onTextChange }) => {
       {questionIndex < videoEatQuestions.length && (
         <div className="question">
           <p>{videoEatQuestions[questionIndex]}</p>
-          <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          <ChatEatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
         </div>
       )}
 

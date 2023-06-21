@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "./ChatMessage";
-import ChatInput from "./ChatInput";
+import ChatDoInput from "./ChatDoInput";
 
 import '../../css/ChatScreen.css';
 
-const ChatDo = ({ character, onTextChange }) => {
+const ChatDo = ({ character, onTextChange, setDo }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -23,10 +23,7 @@ const ChatDo = ({ character, onTextChange }) => {
     onTextChange(text); // Call the onTextChange prop
   };
 
-  const videoDoQuestions = [
-    "다음으로 무엇을 할까요?",
-    "어떤 관광지로 갈까요?",
-  ];
+  const videoDoQuestions = [];
 
   if (questionIndex === videoDoQuestions.length) {
     onTextChange("");
@@ -34,7 +31,7 @@ const ChatDo = ({ character, onTextChange }) => {
 
   const handleNext = () => {
     console.log("Next button clicked");
-    navigate(`/${encodeURIComponent(character)}/options`);
+    navigate(`/${encodeURIComponent(character)}/options/do`);
   };
 
   return (
@@ -50,7 +47,7 @@ const ChatDo = ({ character, onTextChange }) => {
       {questionIndex < videoDoQuestions.length && (
         <div className="question">
           <p>{videoDoQuestions[questionIndex]}</p>
-          <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          <ChatDoInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} setDo={setDo}/>
         </div>
       )}
 

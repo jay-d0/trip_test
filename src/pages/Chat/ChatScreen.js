@@ -1,3 +1,4 @@
+// 보류 //
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "./ChatMessage";
@@ -5,10 +6,15 @@ import ChatInput from "./ChatInput";
 
 import '../../css/ChatScreen.css';
 
-const ChatStay = ({ character, onTextChange }) => {
+const ChatScreen = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
+
+  const determineCategory = (message) => {
+    // 메시지에 따라서 카테고리 결정
+    // questionIndex를 증가시키고, 다음 질문으로 이동
+  };
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
@@ -16,20 +22,25 @@ const ChatStay = ({ character, onTextChange }) => {
     // Send newMessage to the backend
 
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-    setQuestionIndex((prevIndex) => prevIndex + 1);
+    determineCategory(message);
   };
 
-  const handleTextChange = (text) => {
-    onTextChange(text); // Call the onTextChange prop
-  };
-
-  const videoStayQuestions = [
-    "어떤 호텔로 갈까요?",
+  const videoQuestions = [
+    {
+      category: "eat",
+      question: ["어떤 음식점으로 갈까요?", "어떤 메뉴를 먹고 싶으신가요?"]
+    },
+    {
+      category: "stay",
+      question: ["어떤 호텔로 갈까요?"]
+    },
+    {
+      category: "do",
+      question: []
+    }
   ];
 
-  if (questionIndex === videoStayQuestions.length) {
-    onTextChange("");
-  }
+  const currentQuestion = videoQuestions[questionIndex]?.question || "";
 
   const handleNext = () => {
     console.log("Next button clicked");
@@ -46,19 +57,20 @@ const ChatStay = ({ character, onTextChange }) => {
         </div>*/}
 
       {/* 현재 질문 및 input */}
-      {questionIndex < videoStayQuestions.length && (
+      {questionIndex < videoQuestions.length && (
         <div className="question">
-          <p>{videoStayQuestions[questionIndex]}</p>
-          <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          {questionIndex === 0 && <p>다음으로 무엇을 할까요?</p>}
+          <p>{currentQuestion}</p>
+          <ChatInput onSendMessage={handleSendMessage} determineCategory={determineCategory} />
         </div>
       )}
 
       {/* 다음 버튼 */}
-      {questionIndex === videoStayQuestions.length && (
+      {questionIndex === videoQuestions.length && (
         <button onClick={handleNext}>다음</button>
       )}
     </div>
   );
 };
 
-export default ChatStay;
+export default ChatScreen;

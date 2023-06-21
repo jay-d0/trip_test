@@ -1,3 +1,4 @@
+// 원래 ChatInput (수정 전)
 import React, { useState } from "react";
 
 const ChatInput = ({ onSendMessage }) => {
