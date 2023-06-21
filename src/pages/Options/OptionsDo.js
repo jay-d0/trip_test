@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../../css/Options.css";
 import { setOptions } from "leaflet";
 
-const OptionsDo = ({ Do }) => {
+const OptionsDo = ({ Do, setPlayList }) => {
   const navigate = useNavigate();
   const { character } = useParams();
 
@@ -40,11 +40,22 @@ const OptionsDo = ({ Do }) => {
     }); // 'place' 항목의 'key'를 객체의 키로, 'title'을 객체의 값으로 할당
 
     setOptionsData(unpackedOptions);
-  };
+
+  // VideoPlayer.js의 playList 업데이트 (App.js에 업데이트 되어 있음)
+  const updatedPlayList = Do.map((place) => {
+    return {
+      option: place.key,
+      url: `/videos/${place.key}.mp4`,
+      startTime: 1,
+      endTime: 5,
+    };
+  });
+  setPlayList(updatedPlayList);
+};  
 
   useEffect(() => {
     handleDataUpdate();
-  }, [Do]); // Do 배열이 변경될 때마다 handleDataUpdate 함수 호출, optionsData가 업데이트
+  }, [Do, setPlayList]); // Do 배열이 변경될 때마다 handleDataUpdate 함수 호출
 
   const handleOptionClick = (option) => {
     navigate(`/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`);

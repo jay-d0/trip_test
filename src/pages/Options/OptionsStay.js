@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import "../../css/Options.css";
 
-const Options = () => {
+const OptionsStay = () => {
   const navigate = useNavigate();
   const { character } = useParams();
 
@@ -64,4 +64,4 @@ const Options = () => {
   );
 };
 
-export default Options;
+export default OptionsStay;

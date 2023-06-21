@@ -7,7 +7,7 @@ import ChatDo from '../Chat/ChatDo';
 
 import '../../css/VideoPlayer.css';
 
-const VideoPlayer = ({setEat, setStay, setDo}) => {
+const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
   const [playIndex, setPlayIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const playerRef = useRef();
@@ -24,15 +24,6 @@ const VideoPlayer = ({setEat, setStay, setDo}) => {
       setShowChatScreen(true);
     }
   };
-
-  const playList = useMemo(() => [
-    { option: 'louvre-museum', url: '/videos/louvre-museum.mp4', startTime: 1, endTime: 5 },
-    { option: 'arc-de-triomphe', url: '/videos/arc-de-triomphe.mp4', startTime: 1, endTime: 5 },
-    { option: 'centre-pompidu', url: '/videos/centre-pompidu.mp4', startTime: 1, endTime: 5 },
-    { option: 'seine-river', url: '/videos/seine-river.mp4', startTime: 1, endTime: 5 },
-    // Add more locations and adjust start/end times as needed
-    // 백엔드에서 받아야 함
-  ], []);
 
   useEffect(() => {
     const option = location.pathname.split('/').pop();

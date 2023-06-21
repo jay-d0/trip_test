@@ -15,7 +15,11 @@ function App() {
   const [Do, setDo] = useState([]);
   const [Eat, setEat] = useState([]);
   const [Stay, setStay] = useState([]);
+  const [playList, setPlayList] = useState([]);
 
+  const updatePlayList = (updatedPlayList) => {
+    setPlayList(updatedPlayList);
+  };
 
   return (
     <div className="App">
@@ -25,10 +29,10 @@ function App() {
         <Route path="/:character/map" element={<Map />} />
         <Route path="/:character/airport" element={<Airport />} />
         <Route path="/:character/cancel" element={<Cancel SetDo={setDo} SetEat={setEat} SetStay={setStay} />} />
-        <Route path="/:character/options/do" element={<OptionsDo Do={Do} />} />
-        <Route path="/:character/options/eat" element={<OptionsEat Eat={Eat} />} />
-        <Route path="/:character/options/stay" element={<OptionsStay Stay={Stay} />} />
-        <Route path="/:character/video/:option" element={<VideoPlayer  setDo={setDo} setEat={setEat} setStay={setStay} />} />
+        <Route path="/:character/options/do" element={<OptionsDo Do={Do} setPlayList={updatePlayList} />} />
+        <Route path="/:character/options/eat" element={<OptionsEat Eat={Eat} setPlayList={updatePlayList} />} />
+        <Route path="/:character/options/stay" element={<OptionsStay Stay={Stay} setPlayList={updatePlayList} />} />
+        <Route path="/:character/video/:option" element={<VideoPlayer  setDo={setDo} setEat={setEat} setStay={setStay} playList={playList} />} />
       </Routes>
     </div>
   );

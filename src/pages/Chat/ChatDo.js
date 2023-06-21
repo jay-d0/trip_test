@@ -12,9 +12,6 @@ const ChatDo = ({ character, onTextChange, setDo }) => {
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
-
-    // Send newMessage to the backend
-
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setQuestionIndex((prevIndex) => prevIndex + 1);
   };
