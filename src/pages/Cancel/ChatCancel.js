@@ -9,14 +9,7 @@ import communicate from "../../communicate";
 
 import "../../css/ChatScreen.css";
 
-const ChatCancel = ({
-  character,
-  setGuideText,
-  setEat,
-  setStay,
-  setDo,
-  Do,
-}) => {
+const ChatCancel = ({ character, setGuideText, setEat, setStay, setDo }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -46,12 +39,17 @@ const ChatCancel = ({
   };
 
   useEffect(() => {
-    if (category === "food") {
+    if (
+      (category === "cafe") |
+      (category === "alcohol") |
+      (category === "meal")
+    ) {
       setChatComponent(
         <ChatEat
           character={character}
           onTextChange={setGuideText}
           setEat={setEat}
+          category={category}
         />
       );
       setShowChatScreen(false);
@@ -65,7 +63,7 @@ const ChatCancel = ({
       );
       setShowChatScreen(false);
     } else if (category === "attraction") {
-      setChatComponent(<ChatDo character={character} Do={Do} setDo={setDo} />);
+      setChatComponent(<ChatDo character={character} setDo={setDo} />);
       setShowChatScreen(false);
     }
   }, [category]);
@@ -82,7 +80,6 @@ const ChatCancel = ({
     // return hotel;
     communicate.post("/what", { A: text }).then((res) => {
       setCategory(res.data.what);
-      console.log(res.data.what);
     });
     // 관광지, 음식, 호텔 분류 모델 리턴
     // food, hotel, attraction 중 하나 받아옴

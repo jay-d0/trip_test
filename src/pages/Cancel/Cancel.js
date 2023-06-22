@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 import "../../css/Cancel.css";
 
-const Cancel = ({ setDo, setEat, setStay, Do }) => {
+const Cancel = ({ setDo, setEat, setStay }) => {
   const { character } = useParams();
   const [guideText, setGuideText] = useState("");
   const [videoEnded, setVideoEnded] = useState(false);
@@ -77,7 +77,6 @@ const Cancel = ({ setDo, setEat, setStay, Do }) => {
                 setEat={setEat}
                 setStay={setStay}
                 setDo={setDo}
-                Do={Do}
               />
               {/* ChatDo, ChatStay, ChatEat 중 결정된 컴포넌트로 연결
               {chatComponent} */}

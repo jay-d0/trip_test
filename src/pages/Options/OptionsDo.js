@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import "../../css/Options.css";
@@ -32,32 +32,33 @@ const OptionsDo = ({ Do, setPlayList }) => {
 
   const [optionsData, setOptionsData] = useState({});
 
-  const handleDataUpdate = () => {
+  const handleDataUpdate = useCallback(() => {
     const unpackedOptions = {};
     Do.forEach((place) => {
       unpackedOptions[place.key] = place.title;
-    }); // 'place' 항목의 'key'를 객체의 키로, 'title'을 객체의 값으로 할당
+    });
 
     setOptionsData(unpackedOptions);
 
-  // VideoPlayer.js의 playList 업데이트 (App.js에 업데이트 되어 있음)
-  const updatedPlayList = Do.map((place) => {
-    return {
-      option: place.key,
-      url: `/videos/${place.key}.mp4`,
-      startTime: 1,
-      endTime: 5,
-    };
-  });
-  setPlayList(updatedPlayList);
-};  
+    const updatedPlayList = Do.map((place) => {
+      return {
+        option: place.key,
+        url: `/videos/${place.key}.mp4`,
+        startTime: 1,
+        endTime: 5,
+      };
+    });
+    setPlayList(updatedPlayList);
+  }, [Do, setPlayList]);
 
   useEffect(() => {
     handleDataUpdate();
-  }, [Do, setPlayList]); // Do 배열이 변경될 때마다 handleDataUpdate 함수 호출
+  }, [handleDataUpdate]);
 
   const handleOptionClick = (option) => {
-    navigate(`/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`);
+    navigate(
+      `/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`
+    );
   };
 
   const renderOptions = () => {

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import "../../css/Options.css";
 
-const OptionsEat = ({ Eat, setPlayList }) => {
+const OptionsEat = ({ Eat, setPlayList, category }) => {
   const navigate = useNavigate();
   const { character } = useParams();
 
@@ -40,24 +40,26 @@ const OptionsEat = ({ Eat, setPlayList }) => {
 
     setOptionsData(unpackedOptions);
 
-  // VideoPlayer.js의 playList 업데이트 (App.js에 업데이트 되어 있음)
-  const updatedPlayList = Eat.map((place) => {
-    return {
-      option: place.key,
-      url: `/videos/${place.key}.mp4`,
-      startTime: 1,
-      endTime: 5,
-    };
-  });
-  setPlayList(updatedPlayList);
-};  
+    // VideoPlayer.js의 playList 업데이트 (App.js에 업데이트 되어 있음)
+    const updatedPlayList = Eat.map((place) => {
+      return {
+        option: place.key,
+        url: `/videos/${place.key}.mp4`,
+        startTime: 1,
+        endTime: 5,
+      };
+    });
+    setPlayList(updatedPlayList);
+  };
 
   useEffect(() => {
     handleDataUpdate();
   }, [Eat, setPlayList]); // Eat 배열이 변경될 때마다 handleDataUpdate 함수 호출
 
   const handleOptionClick = (option) => {
-    navigate(`/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`);
+    navigate(
+      `/${encodeURIComponent(character)}/video/${encodeURIComponent(option)}`
+    );
   };
 
   const renderOptions = () => {

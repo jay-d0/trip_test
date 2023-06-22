@@ -30,9 +30,7 @@ function App() {
         <Route path="/:character/airport" element={<Airport />} />
         <Route
           path="/:character/cancel"
-          element={
-            <Cancel setDo={setDo} setEat={setEat} setStay={setStay} Do={Do} />
-          }
+          element={<Cancel setDo={setDo} setEat={setEat} setStay={setStay} />}
         />
         <Route
           path="/:character/options/do"
