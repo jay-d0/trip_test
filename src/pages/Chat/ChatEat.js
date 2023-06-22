@@ -4,19 +4,14 @@ import ChatMessage from "./ChatMessage";
 import ChatEatInput from "./ChatEatInput";
 
 import '../../css/ChatScreen.css';
-import communicate from "../../communicate";
 
-const ChatEat = ({ character, onTextChange }) => {
+const ChatEat = ({ character, onTextChange, setEat }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
-  const [A, setA] = useState([]);
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
-
-    // Send newMessage to the backend
-
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setQuestionIndex((prevIndex) => prevIndex + 1);
   };
@@ -52,7 +47,7 @@ const ChatEat = ({ character, onTextChange }) => {
       {questionIndex < videoEatQuestions.length && (
         <div className="question">
           <p>{videoEatQuestions[questionIndex]}</p>
-          <ChatEatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          <ChatEatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} setEat={setEat} />
         </div>
       )}
 

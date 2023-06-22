@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const ChatEatInput = ({ onSendMessage }) => {
+const ChatEatInput = ({ onSendMessage, setEat }) => {
   const [message, setMessage] = useState("");
-  const [Eat, setEat] = useState([]);
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -33,26 +32,6 @@ const ChatEatInput = ({ onSendMessage }) => {
       />
       <button type="submit">보내기</button>
     </form>
-    /*
-    <ul>
-    {
-      ( Eat ? (
-        Eat.map((food) => {
-          return (
-            <div key={food["type"]}>
-              <li> { food["type"] } </li>
-              <ul>
-                <li> title: {food["title"]} </li>              
-                <li> lat: { place["lat"] } </li>    
-                <li> lng: { place["lng"] } </li>
-              </ul>
-            </div>
-          )
-        }))
-      : (<li></li>))
-    }
-  </ul>
-  */
   );
 };
 

@@ -13,9 +13,11 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
   const playerRef = useRef();
   const location = useLocation();
   const [showChatScreen, setShowChatScreen] = useState(false);
-  const [guideText, setGuideText] = useState("");
+  const [guideText, setGuideText] = useState(""); // 입력된 텍스트 저장
   const [chatComponent, setChatComponent] = useState(null);
+  const [Type, setType] = useState({});
 
+  
   const handleTextChange = (text) => {
     setGuideText(text);
     if (text !== "") {
@@ -70,6 +72,11 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
   const zeroShotClassification = (text) => {
     // 관광지, 음식, 호텔 분류 모델 리턴
     // food, hotel, attraction 중 하나 받아옴
+    /* communicate.post('/type',
+    { A
+    }).then((res) => {
+    setType(res.data);
+    })*/
   };
 
   if (playList === null) return <p>Loading...</p>;

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const ChatStayInput = ({ onSendMessage }) => {
+const ChatStayInput = ({ onSendMessage, setStay }) => {
   const [message, setMessage] = useState("");
-  const [stay, setStay] = useState([]);
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -33,25 +32,6 @@ const ChatStayInput = ({ onSendMessage }) => {
       />
       <button type="submit">보내기</button>
     </form>
-    /*
-    <ul>
-    {
-      ( Stay ? (
-        Stay.map((hotel) => {
-          return (
-            <div key={hotel"title"]}>
-              <li> { hotel["title"] } </li>
-              <ul>
-                <li> review: { hotel["review"] } </li>    
-                <li> similarity: { place["similarity"] } </li>
-              </ul>
-            </div>
-          )
-        }))
-      : (<li></li>))
-    }
-  </ul>
-  */
   );
 };
 

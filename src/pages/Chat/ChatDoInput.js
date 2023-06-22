@@ -32,26 +32,6 @@ const ChatDoInput = ({ onSendMessage, setDo }) => {
       />
       <button type="submit">보내기</button>
     </form>
-    /*
-    <ul>
-    {
-      ( Do ? (
-        Do.map((place) => {
-          return (
-            <div key={place["title"]}>
-              <li> { place["title"] } </li>
-              <ul>
-                <li> lat: { place["lat"] } </li>    
-                <li> lng: { place["lng"] } </li>
-                <li> review_summary: { place["review_summary"] } <li>
-              </ul>
-            </div>
-          )
-        }))
-      : (<li></li>))
-    }
-  </ul>
-  */
   );
 };
 

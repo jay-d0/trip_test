@@ -1,7 +1,7 @@
-// 원래 ChatInput (수정 전)
+// 안 씀 //
 import React, { useState } from "react";
 
-const ChatInput = ({ onSendMessage }) => {
+const ChatCancelInput = ({ onSendMessage }) => {
   const [message, setMessage] = useState("");
 
   const handleInputChange = (event) => {
@@ -36,4 +36,4 @@ const ChatInput = ({ onSendMessage }) => {
   );
 };
 
-export default ChatInput;
+export default ChatCancelInput;

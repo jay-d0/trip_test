@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "../Chat/ChatMessage";
-import ChatInput from "../Chat/ChatInput";
-import Options from "../Options/OptionsDo";
+import ChatCancelInput from "./ChatCancelInput";
+import ChatEat from "../Chat/ChatEat";
+import ChatStay from "../Chat/ChatStay";
+import ChatDo from '../Chat/ChatDo';
 
 import "../../css/ChatScreen.css";
 
-const ChatCancel = ({ character, onTextChange }) => {
+const ChatCancel = ({ character, onTextChange, setEat, setStay, setDo }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
-  const [showOptions, setShowOptions] = useState(false);
   const [showChatScreen, setShowChatScreen] = useState(true);
+  const [chatComponent, setChatComponent] = useState(null);
+  const [Type, setType] = useState({});
 
   const handleSendMessage = (message) => {
     const newMessage = { sender: character, text: message };
-
-    // Send newMessage to the backend
-
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setQuestionIndex((prevIndex) => prevIndex + 1);
   };
@@ -35,8 +35,37 @@ const ChatCancel = ({ character, onTextChange }) => {
   }
 
   const handleNext = () => {
-    setShowOptions(true);
+    const category = determineNextScreen(); // 다음 화면 결정
+    if (category === "food") {
+      setChatComponent(<ChatEat character={character} onTextChange={handleTextChange} setEat={setEat} />);
+    } else if (category === "hotel") {
+      setChatComponent(<ChatStay character={character} onTextChange={handleTextChange} setStay={setStay} />);
+    } else if (category === "attraction") {
+      setChatComponent(<ChatDo character={character} onTextChange={handleTextChange} setDo={setDo} />);
+    } else {
+      // 기본적으로 ChatStay 컴포넌트로 이동
+      setChatComponent(<ChatStay character={character} onTextChange={handleTextChange} setStay={setStay} />);
+    }
+
     setShowChatScreen(false);
+  };
+
+  const determineNextScreen = () => {
+    const text = messages[questionIndex].text;
+    if (text.trim() !== "") {
+      const category = zeroShotClassification(text);
+      return category;
+    }
+  };
+
+  const zeroShotClassification = (text) => {
+    // 관광지, 음식, 호텔 분류 모델 리턴
+    // food, hotel, attraction 중 하나 받아옴
+    /* communicate.post('/type',
+    { A
+    }).then((res) => {
+    setType(res.data);
+    })*/
   };
 
   return (
@@ -55,24 +84,20 @@ const ChatCancel = ({ character, onTextChange }) => {
           {questionIndex < cancelQuestions.length && (
             <div className="question">
               <p>{cancelQuestions[questionIndex]}</p>
-              <ChatInput
+              <ChatCancelInput
                 onSendMessage={handleSendMessage}
                 onTextChange={handleTextChange}
               />
             </div>
           )}
 
-          {!showOptions && questionIndex === cancelQuestions.length && (
+          { questionIndex === cancelQuestions.length && (
                   <button 
                   className="next-button"
                   onClick={handleNext}>다음</button>
                 )}
-
         </div>
       )}
-
-      {/* Options 컴포넌트 */}
-      {showOptions && <Options />}
     </div>
   );
 };

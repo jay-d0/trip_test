@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import "../../css/Options.css";
-import { setOptions } from "leaflet";
 
 const OptionsDo = ({ Do, setPlayList }) => {
   const navigate = useNavigate();

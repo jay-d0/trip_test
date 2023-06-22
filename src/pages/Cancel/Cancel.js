@@ -1,14 +1,19 @@
 import ReactPlayer from 'react-player';
 import { useState, useRef, useEffect } from 'react';
-import ChatCancel from "./ChatCancel";
-import '../../css/Cancel.css';
-import { useParams} from "react-router-dom";
+import ChatEat from "../Chat/ChatEat";
+import ChatStay from "../Chat/ChatStay";
+import ChatDo from '../Chat/ChatDo';
+import ChatCancel from './ChatCancel';
+import { useParams } from "react-router-dom";
 
-const Cancel = () => {
+import '../../css/Cancel.css';
+
+const Cancel = ({ setEat, setStay, setDo, playList }) => {
   const { character } = useParams();
   const [guideText, setGuideText] = useState("");
   const [videoEnded, setVideoEnded] = useState(false);
   const [characterVisible, setCharacterVisible] = useState(false);
+
 
   const characters = [
     {
@@ -70,6 +75,8 @@ const Cancel = () => {
               <ChatCancel 
               character={character} 
               onTextChange={handleTextChange} />
+              {/* ChatDo, ChatStay, ChatEat 중 결정된 컴포넌트로 연결
+              {chatComponent} */}
             </div></>
       )}
       </div>

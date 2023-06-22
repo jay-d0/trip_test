@@ -46,7 +46,7 @@ const ChatStay = ({ character, onTextChange, setStay }) => {
       {questionIndex < videoStayQuestions.length && (
         <div className="question">
           <p>{videoStayQuestions[questionIndex]}</p>
-          <ChatStayInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          <ChatStayInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} setStay={setStay}/>
         </div>
       )}
 

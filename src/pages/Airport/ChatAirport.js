@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatMessage from "../Chat/ChatMessage";
-import ChatInput from "../Chat/ChatInput";
+import ChatInput from "../Cancel/ChatCancelInput";
 
 import '../../css/ChatScreen.css';
 
