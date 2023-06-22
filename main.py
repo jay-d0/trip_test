@@ -57,11 +57,11 @@ def read_place(place: Place):
 
 # Hotel
 class Hotels(BaseModel):
-    text_input: str
-    price_level: str
-    aspects: str
+    A: str
+    pers_price: str
+    pers_aspect: str
 
-@app.post("/hotels")
+@app.post("/hotel")
 def read_hotel(hotels: Hotels):
     text_input, price_level, aspects = dict(hotels).values()
     aspects = aspects.split(',')

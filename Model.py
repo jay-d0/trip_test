@@ -32,14 +32,30 @@ def translate_korean_to_english(text):
         return translation.text
 
 # 관광지, 음식, 호텔 분류 모델
-def zero_shot_classification(text: str):
+# def zero_shot_classification(text: str):
+#     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+#     labels = ["food", "hotel", "attraction"]
+#     text = translate_korean_to_english(text)
+#     result = classifier(text, labels)
+
+#     top_category = result["labels"][0]
+
+#     return top_category
+
+def zero_shot_classification(text):
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
     labels = ["food", "hotel", "attraction"]
     text = translate_korean_to_english(text)
     result = classifier(text, labels)
 
     top_category = result["labels"][0]
-
+    if top_category == "food":
+        labels2 = ['cafe','alcohol','meal']
+        
+        result2 = classifier(text, labels2)
+        top_category = result2["labels"][0]
+        return top_category
+        
     return top_category
 
 # 관광지
