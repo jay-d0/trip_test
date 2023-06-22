@@ -1,19 +1,18 @@
-import ReactPlayer from 'react-player';
-import { useState, useRef, useEffect } from 'react';
+import ReactPlayer from "react-player";
+import { useState, useRef, useEffect } from "react";
 import ChatEat from "../Chat/ChatEat";
 import ChatStay from "../Chat/ChatStay";
-import ChatDo from '../Chat/ChatDo';
-import ChatCancel from './ChatCancel';
+import ChatDo from "../Chat/ChatDo";
+import ChatCancel from "./ChatCancel";
 import { useParams } from "react-router-dom";
 
-import '../../css/Cancel.css';
+import "../../css/Cancel.css";
 
-const Cancel = ({ setEat, setStay, setDo, playList }) => {
+const Cancel = ({ setDo, setEat, setStay, Do }) => {
   const { character } = useParams();
   const [guideText, setGuideText] = useState("");
   const [videoEnded, setVideoEnded] = useState(false);
   const [characterVisible, setCharacterVisible] = useState(false);
-
 
   const characters = [
     {
@@ -38,9 +37,6 @@ const Cancel = ({ setEat, setStay, setDo, playList }) => {
 
   const selectedCharacter = characters.find((char) => char.name === character);
 
-  const handleTextChange = (text) => {
-    setGuideText(text);
-  };
   const handleVideoEnd = () => {
     setVideoEnded(true);
   };
@@ -50,35 +46,44 @@ const Cancel = ({ setEat, setStay, setDo, playList }) => {
       setCharacterVisible(true);
     }
   }, [videoEnded]);
-  
+
   return (
     <div className="video-chat-container">
       <div className="home-container">
         <ReactPlayer
-          url={'/videos/driving.mp4'}
+          url={"/videos/driving.mp4"}
           playing={true}
           controls={false}
           muted={true}
           progressInterval={1000}
           pip={true}
-          width={'100%'}
-          height={'100%'}
+          width={"100%"}
+          height={"100%"}
           onEnded={handleVideoEnd}
         />
         {videoEnded && characterVisible && (
-          <><div className="selectedCharacter">
-            <img
-              src={selectedCharacter.img_url}
-              alt={selectedCharacter.name} />
-          </div><div className="guide_saying">
+          <>
+            <div className="selectedCharacter">
+              <img
+                src={selectedCharacter.img_url}
+                alt={selectedCharacter.name}
+              />
+            </div>
+            <div className="guide_saying">
               <p>{guideText}</p>
-              <ChatCancel 
-              character={character} 
-              onTextChange={handleTextChange} />
+              <ChatCancel
+                character={character}
+                setGuideText={setGuideText}
+                setEat={setEat}
+                setStay={setStay}
+                setDo={setDo}
+                Do={Do}
+              />
               {/* ChatDo, ChatStay, ChatEat 중 결정된 컴포넌트로 연결
               {chatComponent} */}
-            </div></>
-      )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
