@@ -34,7 +34,7 @@ const ChatEat = ({ character, onTextChange, setEat, category }) => {
         "어떤 식사를 하고 싶으신가요?",
         "구체적인 식당 분위기나 원하시는 내용이 있으실까요?",
       ]);
-    } else if (category === "bar") {
+    } else if (category === "alcohol") {
       setQ([
         "어떤 술을 마시고 싶으신가요? 정해두신 주류 종류가 있으신가요?",
         "구체적인 가게 분위기나 원하는 내용이 있으실까요?",
@@ -53,6 +53,13 @@ const ChatEat = ({ character, onTextChange, setEat, category }) => {
       hotel_price: "low",
       hotel_aspects: "cleanness,traffic,kindness",
       place_famous: "Famous",
+    },
+    {
+      name: "박유찬",
+      food_price: "premium",
+      hotel_price: "premium",
+      hotel_aspects: "cleanness,traffic,kindness",
+      place_famous: "not",
     },
   ];
 

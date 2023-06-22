@@ -81,6 +81,13 @@ const ChatDo = ({ character, setDo, co }) => {
       hotel_aspects: "cleanness,traffic,kindness",
       place_famous: "Famous",
     },
+    {
+      name: "박유찬",
+      food_price: "premium",
+      hotel_price: "premium",
+      hotel_aspects: "cleanness,traffic,kindness",
+      place_famous: "not",
+    },
   ];
 
   useEffect(() => {

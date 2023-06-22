@@ -8,13 +8,13 @@
   padding: 20px;
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(245, 245, 245, 0.8);
-  border-radius: 8px;
-  height: 200px;
-  width: 50%;
+  border-radius: 28px;
+  height: 100px;
+  width: 800px;
   overflow-y: scroll;
 }
 
@@ -38,9 +38,11 @@
 }
 
 .question p {
-  font-size: 18px;
+  font-size: 30px;
+  font-weight: bold; /* Add this line to change the font weight */
+
   margin-bottom: 10px;
-  width: 100%; /* Set the width to 100% to span the entire container */
+  width: 100%; 
 }
 
 /* ChatMessage CSS */
@@ -100,4 +102,10 @@ body {
   padding: 20px;
   position: relative;
   z-index: 0;
+}
+.material-icons{
+  position: relative;
+  right: 300px;
+  bottom: -150px;
+  z-index: 5;
 }

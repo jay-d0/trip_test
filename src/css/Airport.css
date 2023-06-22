@@ -1,38 +1,28 @@
 .home-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .video-player-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-  }
-  
+  position: relative;
+  width: 100%;
+  padding-bottom: 0%;
+}
+
 .react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-   }
-
-.input{
-    font-family: 'Mplus 1p Bold';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    width: 90%;
-    line-height: 150%;
-    letter-spacing: -0.019em;
-    align-items: center;
-  }
-
-  .selectedCharacter {
-    position: absolute;
-    left: -50%;
-    top: 30%;
-    width: 10px;
-    height: 50px;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ }
+ .selectedCharacter img{
+  position: relative;
+  width: 230px;
+  height: 200px;
+  right: -1120px;
+  bottom: -460px;
+  object-fit: cover;
+  border-radius: 50%;
+}

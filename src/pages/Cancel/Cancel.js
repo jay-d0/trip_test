@@ -1,12 +1,12 @@
 import ReactPlayer from "react-player";
-import { useState, useRef, useEffect } from "react";
-import ChatEat from "../Chat/ChatEat";
-import ChatStay from "../Chat/ChatStay";
-import ChatDo from "../Chat/ChatDo";
+import { useState, useEffect } from "react";
 import ChatCancel from "./ChatCancel";
 import { useParams } from "react-router-dom";
 
 import "../../css/Cancel.css";
+import 서우석 from "../../icons/서우석.gif";
+import 민성우 from "../../icons/민성우.gif";
+import 박유찬 from "../../icons/박유찬.gif";
 
 const Cancel = ({ setDo, setEat, setStay, co }) => {
   const { character } = useParams();
@@ -18,20 +18,17 @@ const Cancel = ({ setDo, setEat, setStay, co }) => {
     {
       name: "민성우",
       style: "먹는 것에 돈을 아끼지 않는다.",
-      img_url:
-        "https://w7.pngwing.com/pngs/390/806/png-transparent-rilakkuma-kakaotalk-kakao-friends-south-korea-kakaofriends-sticker-desktop-wallpaper-snout-thumbnail.png",
+      img_url: 민성우,
     },
     {
       name: "박유찬",
       style: "박물관과 미술관을 좋아한다.",
-      img_url:
-        "https://e7.pngegg.com/pngimages/982/1017/png-clipart-kakaotalk-kakao-friends-sticker-line-ryan-smiley-sticker.png",
+      img_url: 박유찬,
     },
     {
       name: "서우석",
       style: "현지인들과 어울리기를 좋아한다.",
-      img_url:
-        "https://e7.pngegg.com/pngimages/825/741/png-clipart-kakaotalk-kakao-friends-sticker-iphone-iphone-electronics-smiley.png",
+      img_url: 서우석,
     },
   ];
 
@@ -54,7 +51,7 @@ const Cancel = ({ setDo, setEat, setStay, co }) => {
           url={"/videos/driving.mp4"}
           playing={true}
           controls={false}
-          muted={true}
+          muted={false}
           progressInterval={1000}
           pip={true}
           width={"100%"}

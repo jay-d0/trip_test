@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ChatMessage from "../Chat/ChatMessage";
 import ChatInput from "../Cancel/ChatCancelInput";
 
-import '../../css/ChatScreen.css';
+import "../../css/ChatScreen.css";
 
 const ChatAirport = ({ character, onTextChange }) => {
   const [messages, setMessages] = useState([]);
@@ -24,13 +24,18 @@ const ChatAirport = ({ character, onTextChange }) => {
   };
 
   const airportQuestions = [
-    "공항에 도착했습니다. 다음으로 무엇을 할까요?", // 호텔로 이동하는 영상 틀기
+    "공항에 도착했습니다. 다음으로 무엇을 할까요?",
+    "뭐할까요?",
   ];
 
   if (questionIndex === airportQuestions.length) {
     onTextChange("");
   }
 
+  // const handleNext = () => {
+  //   console.log("Next button clicked");
+  //   navigate(`/${encodeURIComponent(character)}/cancel`);
+  // };
   const handleNext = () => {
     console.log("Next button clicked");
     navigate(`/${encodeURIComponent(character)}/cancel`);
@@ -49,13 +54,16 @@ const ChatAirport = ({ character, onTextChange }) => {
       {questionIndex < airportQuestions.length && (
         <div className="question">
           <p>{airportQuestions[questionIndex]}</p>
-          <ChatInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} />
+          <ChatInput
+            onSendMessage={handleSendMessage}
+            onTextChange={handleTextChange}
+          />
         </div>
       )}
 
       {/* 다음 버튼 */}
       {questionIndex === airportQuestions.length && (
-        <button onClick={handleNext}>다음</button>
+        <button onClick={handleNext}>그럼 일단 호텔로 갑시다</button>
       )}
     </div>
   );

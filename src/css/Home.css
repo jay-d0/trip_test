@@ -43,7 +43,7 @@ button:hover {
   background-color: #45b8d8;
 } */
 
-.home-container {
+/* .home-container {
   position: relative;
   height: 100vh;
   display: flex;
@@ -90,4 +90,69 @@ button {
   width: 100%;
   height: 100%;
   background-color: #FDEED7;
+} */
+
+
+
+.home-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D0C2FF;
+}
+
+.logo-image {
+  position: absolute;
+  top: -8%;
+  width: 80%;
+  max-width: 800px;
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+}
+
+h1 {
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  background-color: white;
+  border-radius: 30px;
+}
+h2{
+  font-size: 36px;
+}
+
+button {
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 150%;
+  color: #000000;
+}
+
+.background-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FDEED7;
+}
+
+.start{
+  width: 30%;
+  height: 30%;
+  position: relative;
+  bottom: 50px;
 }
