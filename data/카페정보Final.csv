@@ -1,0 +1,51 @@
+Entity,Name,Address,Price,Latitude,Longitude
+1,La Crêperie,"7 rue Joseph de Maistre Montmartre, 75018 Paris France",5596.0,48.8859567,2.3341286
+2,Rozell Café,"24 rue la Vieuville, 75018 Paris France",12341.3,48.8847341,2.3406029
+3,Jozi Cafe,"3 rue Valette, 75005 Paris France",11892.0,48.8478763,2.3471031
+4,Le Crepuscule,"18 rue Amelie Metro la Tour-Maubourg Line 8, 75007 Paris France",10493.0,48.8579514,2.3102804
+5,A. Lacroix Patissier,"11 quai de Montebello, 75005 Paris France",11192.5,48.8516951,2.3494149
+6,Bagel Baget Cafe,"91 rue de la Verrerie, 75004 Paris France",14690.0,48.8587129,2.3507902
+7,Creperie Broceliande,"15 rue des 3 Freres, 75018 Paris France",18188.0,48.8843644,2.3410935
+8,Mori Yoshida,"65 avenue de Breteuil, 75007 Paris France",12341.3,48.8480236,2.3123399
+9,Aux Merveilleux de Fred,"29 rue de l Annonciation, 75016 Paris France",12341.3,48.8568359,2.2788997
+10,La Droguerie,"47 rue du Faubourg Saint Denis, 75004 Paris France",8463.5,48.871664,2.353529
+11,BO&MIE - Turbigo,"18 rue de Turbigo, 75002 Paris France",11892.0,48.8640152,2.3503204
+12,Christophe Roussel,"5 rue Tardieu, 75018 Paris France",12341.3,48.8840689,2.3421135
+13,Boulangerie Alexine,"40 rue Lepic, 75018 Paris France",12341.3,48.8860734,2.33465
+14,La Valentin,"30 Passage Jouffroy, 75009 Paris France",12341.3,48.8724043,2.3422352
+15,Doriimu,"10 rue de la chaussee D Antin, 75009 Paris France",10493.0,48.87188130000001,2.3339046
+16,Pierre Herme Cambon,"4 rue Cambon, 75001 Paris France",12341.3,48.8664871,2.3255944
+17,Chambelland Boulangerie (PARIS),"14 rue Ternaux 1 Rue du Marche Popincourt, 75011 Paris France",12341.3,48.863997,2.372084
+18,Au P'tit Grec,"68 rue Mouffetard, 75005 Paris France",12341.3,48.8427708,2.3495575
+19,Creperie Genia,"7 rue de la Harpe 75005, 75005 Paris France",12341.3,48.85282489999999,2.3447756
+20,Carl Marletti,"51 rue Censier, 75005 Paris France",12341.3,48.8393306,2.3505016
+21,Du Pain et des Idées,"34 rue Yves Toudic, 75010 Paris France",12341.3,48.8712453,2.3628904
+22,Strada Café,"94 rue du Temple, 75003 Paris France",18888.0,48.8621584,2.357447800000001
+23,La Chocolaterie de Jacques Genin,"133 rue de Turenne, 75003 Paris France",12341.3,48.8644465,2.3645636
+24,Lindt,"11 B rue Scribe, 75009 Paris France",12341.3,48.8723584,2.3306374
+25,Boulangerie Utopie,"20 rue Jean Pierre Timbaud, 75011 Paris France",9793.5,48.865282,2.3686929
+26,Amorino La Huchette,"16 rue de la Huchette, 75005 Paris France",12341.3,48.85309849999999,2.3458322
+27,Aki Boulanger,"16 rue Sainte Anne, 75001 Paris France",12341.3,48.8661124,2.3356407
+28,Berthillon,"31 rue Saint Louis en L Ile, 75004 Paris France",12341.3,48.8517135,2.3567206
+29,Le Grenier a Pain Abbesses,"38 rue des Abbesses, 75018 Paris France",12341.3,48.8853235,2.3367417
+30,She's cake,"20 avenue Ledru Rollin 12eme Arrondissement, 75012 Paris France",12341.3,48.8465374,2.3692331
+31,Princess Crepe,"3 rue des Ecouffes, 75004 Paris France",12341.3,48.8564337,2.3582173
+32,O Coffee,"23 rue de Lourmel, 75015 Paris France",12341.3,48.84909039999999,2.2911047
+33,Odette Paris,"77 rue Galande, 75005 Paris France",12341.3,48.852045,2.3464948
+34,Bachir,"58 rue Rambuteau, 75003 Paris France",12341.3,48.8617818,2.3515038
+35,Bontemps,"57 rue de Bretagne, 75003 Paris France",12341.3,48.863859,2.3606152
+36,Gelateria Grom,"81 rue de Seine, 75006 Paris France",12341.3,48.8533516,2.3370569
+37,Pain Pain,"88 rue des Martyrs, 75018 Paris France",12341.3,48.8834622,2.3399443
+38,Matamata Coffee Bar,"58 rue d Argout, 75002 Paris France",12341.3,48.8660935,2.344117
+39,La Creperie,"12 rue Soufflot, 75005 Paris France",12341.3,48.8470293,2.3432836
+40,Café Dose Paris • Mouffetard,"73 rue Mouffetard, 75005 Paris France",9793.5,48.8422132,2.3499064
+41,Alma the Chimney Cake Factory,"59 boulevard Beaumarchais, 75003 Paris France",11192.5,48.8574833,2.3678149
+42,Pierre Hermé Bonaparte,"72 rue Bonaparte, 75006 Paris France",12341.3,48.8515407,2.332817
+43,Ble Sucre,"7 rue Antoine Vollon, 75012 Paris France",12341.3,48.8505998,2.3766946
+44,Amorino Paris - L’Île Saint Louis,"47 rue Saint Louis en L Ile, 75004 Paris France",12341.3,48.8520393,2.3557406
+45,Pâtisserie Stohrer,"51 rue Montorgueil 2ème Arrondissement, 75002 Paris France",12341.3,48.8652534,2.3467217
+46,Pozzetto,"39 rue du Roi de Sicile Metro Hotel de Ville/stPaul, 75004 Paris France",15625.0,48.8566808,2.3562466
+47,Gelati d'Alberto,"45 rue Mouffetard, 75005 Paris France",12341.3,48.84359,2.3495163
+48,Eric Kayser - 8 rue Monge,"8 rue Monge Maubert-Mutualité, Sorbonne, 75005 Paris France",12341.3,48.84979149999999,2.348733
+49,Le Peloton Cafe,"17 rue du Pont Louis Philippe Le Marais, 75004 Paris France",16927.0,48.8555465,2.3558863
+50,Jean-Paul Hévin Chocolatier,"231 rue Saint Honore Côté Cour, 75001 Paris France",12341.3,48.8661778,2.3291679

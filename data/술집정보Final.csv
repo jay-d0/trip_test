@@ -1,0 +1,51 @@
+Entity,Name,Address,Price,Latitude,Longitude
+1,Frog Hop House,"10 rue des Capucines, 75002 Paris France",26462.846154,48.8692102,2.3291179
+2,Les Petits Crus,"13 rue Saint Sabin, 75011 Paris France",26462.846154,48.8553606,2.371849
+3,Prik Thai Maine,"160 avenue du Maine, 75014 Paris France",49479.0,48.8334935,2.3241797
+4,La Vache Dans Les Vignes,"46 quai de Jemmapes Métro République ou Goncourt, 75010 Paris France",26462.846154,48.8697279,2.3671488
+5,CHEZ BOUBOULE,"0 avenue Trudaine Angle avenue Trudaine et rue de Rochechouart, 75009 Paris France",38310.0,48.881914,2.3465963
+6,Hoppy Corner,"34 rue des Petits Carreaux, 75002 Paris France",16717.0,48.8677471,2.3474972
+7,Le Claque-Fromage,"49 avenue Trudaine, 75009 Paris France",27165.0,48.8806604,2.3411305
+8,Dessirier,"9 Place du Marechal Juin, 75017 Paris France",132344.0,48.8848342,2.2963788
+9,Paname Brewing Company,"41 quai de la Loire, 75019 Paris France",26462.846154,48.8878384,2.3794228
+10,La Maison du Knafé,"5 rue Paul Albert, 75018 Paris France",17413.5,48.8866153,2.3448903
+11,The Green Goose,"19 rue des Boulets, 75011 Paris France",26462.846154,48.8503775,2.3905789
+12,Boteco Vila Mada,"51 avenue Trudaine, 75009 Paris France",13234.5,48.8806743,2.3409711
+13,Pub O'Prince,"52 rue Monsieur le Prince, 75006 Paris France",26462.846154,48.8483415,2.3400824
+14,Galbar,"50 Rue du Faubourg Poissonnière, 75010 Paris France",14627.5,48.8744332,2.3486438
+15,Isadora Cocktail Bar,"60 rue Jean-Jacques Rousseau, 75001 Paris France",11145.0,48.8640238,2.3436879
+16,Mermaids And Divers,"23 Rue De Lappe, 75011 Paris France",26462.846154,48.8537454,2.3728703
+17,le syndicat,"51 rue du Faubourg Saint Denis, 75010 Paris France",26462.846154,48.8718537,2.3531206
+18,Copperbay,"5 rue Bouchardon, 75010 Paris France",26462.846154,48.8698811,2.3571381
+19,Le Comptoir Bar Restaurant,"354 B rue de Vaugirard, 75015 Paris France",18229.5,48.8358088,2.2929874
+20,Le Comptoir Bar Restaurant,"354 B rue de Vaugirard, 75015 Paris France",18229.5,48.8358088,2.2929874
+21,Boteco Lapa,"48 rue de l Echiquier, 75010 Paris France",13931.0,48.87208649999999,2.3481065
+22,Dirty Dick,"10 rue Frochot, 75009 Paris France",26462.846154,48.8815264,2.3376141
+23,Le Biscornu,"89 rue Montmartre, 75002 Paris France",26462.846154,48.8677319,2.3437097
+24,The Lizard Lounge,"18 rue du Bourg Tibourg, 75004 Paris France",16927.0,48.85738449999999,2.3563496
+25,NAN,NAN,26462.846154,1.0,1.0
+26,Thirsty Mad Cat,"120 rue Montmartre, 75002 Paris France",16717.5,48.8678229,2.3439944
+27,Gamelle,"29 avenue Daumesnil, 75012 Paris France",26469.0,48.8480356,2.3742299
+28,La Belle Hortense,"31, rue Vielle du Temple, 75004 Paris France",26462.846154,48.8575701,2.3574453
+29,NAN,NAN,26462.846154,1.0,1.0
+30,Le Calbar,"82 rue de Charenton, 75012 Paris France",26462.846154,48.8486601,2.3753007
+31,Les Cuves de Fauve,"64 rue de Charonne, 75011 Paris France",31344.5,48.8532686,2.3789881
+32,La Fourmi,"74 rue des Martyrs, 75018 Paris France",26462.846154,48.88256029999999,2.339824
+33,Mabel,"58 rue d Aboukir, 75002 Paris France",26462.846154,48.8674228,2.3461087
+34,Who's Bar,"14 rue Saint Merri, 75004 Paris France",21593.0,48.8594972,2.3529673
+35,ACT 21,"5, rue Sauval, 75001 Paris France",13234.0,48.86185140000001,2.3424197
+36,SDN2 SAS Les Agapes de Nina,"5 rue Ferdinand Duval, 75004 Paris France",26462.846154,48.85630219999999,2.359248
+37,Upper Café,"5 rue de Clichy, 75009 Paris France",25772.0,48.8768091,2.3307217
+38,The Freedom Pub,"8 rue de Berri, 75008 Paris France",14627.5,48.8722454,2.3039911
+39,La boissonnière,"17 rue Poissonniere, 75002 Paris France",11144.5,48.8694028,2.3474175
+40,Piston Pélican,"15 rue de Bagnolet, 75020 Paris France",16276.0,48.8568647,2.3957818
+41,Iguana Café,"20 rue Severiano de Heredia En face du 17 boulevard Pereire, 75017 Paris France",34827.5,48.8816092,2.288784300000001
+42,Les P'tits Potes,"33 rue des Dames, 75017 Paris France",27862.0,48.88416309999999,2.3237651
+43,La Cave de Septime,"3 rue Basfroi, 75011 Paris France",26462.846154,48.8537448,2.3801779
+44,NAN,NAN,27862.0,1.0,1.0
+45,Les Amateurs,"143 rue Cardinet, 75017 Paris France",32552.0,48.88698369999999,2.3134699
+46,L'Etabli,"4 rue Bridaine, 75017 Paris France",26462.846154,48.88619920000001,2.3203898
+47,Bootleg Bar,"55 rue de la Roquette, 75011 Paris France",26462.846154,48.856085,2.3754345
+48,Lavomatic,"30 rue Rene Boulanger, 75010 Paris France",26462.846154,48.8685059,2.3617785
+49,Wim à Table,"45 rue des Moines, 75017 Paris France",26462.846154,48.8899068,2.3202463
+50,Le Yono,"37 rue Vieille du Temple, 75004 Paris France",26462.846154,48.8578229,2.3575184
