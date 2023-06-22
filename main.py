@@ -55,6 +55,42 @@ def read_place(place: Place):
 
     return places
 
+# 카페 추천
+class Cafe(BaseModel):
+    A: str
+    pers_price: str
+
+@app.post("/cafe")
+def read_place(cafe: Cafe):
+    A, pers_price = dict(cafe).values()
+    cafes = process_cafe(input_text=A, option=pers_price)
+
+    return cafes
+
+# 식당 추천
+class Meal(BaseModel):
+    A: str
+    pers_price: str
+
+@app.post("/meal")
+def read_place(meal: Meal):
+    A, pers_price = dict(meal).values()
+    meals = process_restaurant(input_text=A, option=pers_price)
+
+    return meals
+
+# 술집 추천
+class Bar(BaseModel):
+    A: str
+    pers_price: str
+
+@app.post("/bar")
+def read_place(bar: Bar):
+    A, pers_price = dict(bar).values()
+    bars = process_bar(input_text=A, option=pers_price)
+
+    return bars
+
 # Hotel
 class Hotels(BaseModel):
     A: str
@@ -67,5 +103,6 @@ def read_hotel(hotels: Hotels):
     aspects = aspects.split(',')
     hotel_df = hotel_chat(text_input, price_level, aspects)
     return [{"title": row['hotel'],
+             "key": price_level,
              "aspects":{k:v for k, v in zip(aspects, row[aspects])}}
              for _, row in hotel_df.iterrows()]

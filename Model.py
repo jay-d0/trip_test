@@ -27,9 +27,9 @@ def lib_import():
 
 # google_translate
 def translate_korean_to_english(text):
-        translator = Translator()
-        translation = translator.translate(text, src='ko', dest='en')
-        return translation.text
+    translator = Translator()
+    translation = translator.translate(text, src='ko', dest='en')
+    return translation.text
 
 # 관광지, 음식, 호텔 분류 모델
 # def zero_shot_classification(text: str):
@@ -120,6 +120,7 @@ def process_cafe(input_text, option):
 
     model = SentenceTransformer('bert-base-nli-mean-tokens')
 
+    input_text = translate_korean_to_english(input_text)
     topic_embedding = model.encode([input_text], convert_to_tensor=True).detach().cpu().numpy()[0]
     df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity(x.reshape(1, -1), topic_embedding.reshape(1, -1))[0][0])
     
@@ -140,11 +141,13 @@ def process_cafe(input_text, option):
                 break
 
     recommendations = []
-    for _, (name, _, latitude, longitude) in enumerate(recommended_restaurants):
+    for _, (name, address, latitude, longitude) in enumerate(recommended_restaurants):
         recommendation = {
             "title": name,
+            "address": address,
             "lat": latitude,
-            "lng": longitude
+            "lng": longitude,
+            "key": name.lower().replace(' ', '-')
         }
         recommendations.append(recommendation)
 
@@ -168,6 +171,7 @@ def process_restaurant(input_text, option):
 
     model = SentenceTransformer('bert-base-nli-mean-tokens')
 
+    input_text = translate_korean_to_english(input_text)
     topic_embedding = model.encode([input_text], convert_to_tensor=True).detach().cpu().numpy()[0]
     df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity(x.reshape(1, -1), topic_embedding.reshape(1, -1))[0][0])
     
@@ -188,11 +192,13 @@ def process_restaurant(input_text, option):
                 break
 
     recommendations = []
-    for _, (name, _, latitude, longitude) in enumerate(recommended_restaurants):
+    for _, (name, address, latitude, longitude) in enumerate(recommended_restaurants):
         recommendation = {
             "title": name,
+            "address": address,
             "lat": latitude,
-            "lng": longitude
+            "lng": longitude,
+            "key": name.lower().replace(' ', '-')
         }
         recommendations.append(recommendation)
 
@@ -216,6 +222,7 @@ def process_bar(input_text, option):
 
     model = SentenceTransformer('bert-base-nli-mean-tokens')
 
+    input_text = translate_korean_to_english(input_text)
     topic_embedding = model.encode([input_text], convert_to_tensor=True).detach().cpu().numpy()[0]
     df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity(x.reshape(1, -1), topic_embedding.reshape(1, -1))[0][0])
     
@@ -236,11 +243,13 @@ def process_bar(input_text, option):
                 break
 
     recommendations = []
-    for _, (name, _, latitude, longitude) in enumerate(recommended_restaurants):
+    for _, (name, address, latitude, longitude) in enumerate(recommended_restaurants):
         recommendation = {
             "title": name,
+            "address": address,
             "lat": latitude,
-            "lng": longitude
+            "lng": longitude,
+            "key": name.lower().replace(' ', '-')
         }
         recommendations.append(recommendation)
 
@@ -251,7 +260,7 @@ def hotel_chat(text_input, price_level='premium', aspects=['cleanness', 'conveni
     # data load
     warnings.filterwarnings(action='ignore')
     reviews = pd.read_csv('./data//reviews_absa.csv')
-
+    text_input = translate_korean_to_english(text_input)
     # example persona & selected aspect
     # price_level = ['premium', 'high', 'usual', 'low']
     # aspects_candi = ["cleanness", "silence", "traffic",
