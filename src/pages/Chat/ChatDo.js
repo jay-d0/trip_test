@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ChatMessage from "./ChatMessage";
-import ChatDoInput from "./ChatDoInput";
 
 import communicate from "../../communicate";
 import "../../css/ChatScreen.css";
 
-const ChatDo = ({ character, setDo }) => {
+const ChatDo = ({ character, setDo, co }) => {
   // const [messages, setMessages] = useState([]);
   // const [questionIndex, setQuestionIndex] = useState(0);
   const [doDo, setDoDo] = useState([]);
@@ -75,12 +73,24 @@ const ChatDo = ({ character, setDo }) => {
     navigate(`/${encodeURIComponent(character)}/options/do`);
   };
 
+  const characterArray = [
+    {
+      name: "서우석",
+      food_price: "normal",
+      hotel_price: "low",
+      hotel_aspects: "cleanness,traffic,kindness",
+      place_famous: "Famous",
+    },
+  ];
+
   useEffect(() => {
     communicate
       .post("place", {
-        pers_far: "Famous",
-        lat: 48.8640152,
-        lng: 2.3503204,
+        pers_far: characterArray.filter((item) => {
+          return item.name === character ? item : null;
+        })[0].place_famous,
+        lat: co[0],
+        lng: co[1],
       })
       .then((res) => {
         setDo((prev) => {

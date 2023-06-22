@@ -1,14 +1,16 @@
 import ReactPlayer from "react-player";
 import { useState, useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ChatEat from "../Chat/ChatEat";
 import ChatStay from "../Chat/ChatStay";
 import ChatDo from "../Chat/ChatDo";
 import communicate from "../../communicate";
+import { useNavigate } from "react-router-dom";
 
 import "../../css/VideoPlayer.css";
 
-const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
+const VideoPlayer = ({ setEat, setStay, setDo, playList, co }) => {
+  const { character, _ } = useParams();
   const [playIndex, setPlayIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const playerRef = useRef();
@@ -18,16 +20,19 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
   const [chatComponent, setChatComponent] = useState(null);
   const [Type, setType] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   // 앞 턴의 영상 재생 //
 
   useEffect(() => {
     const option = location.pathname.split("/").pop();
-    const optionIndex = playList.findIndex((video) => video.option === option);
+    const optionIndex = playList.findIndex((video) => {
+      return video.option === option;
+    });
     if (optionIndex !== -1) {
       setPlayIndex(optionIndex);
     }
-  }, [location.pathname, playList]);
+  }, [location.pathname]);
 
   // 영상 pause //
 
@@ -59,11 +64,10 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
   };
 
   useEffect(() => {
-    console.log(Type);
     if ((Type === "cafe") | (Type === "alcohol") | (Type === "meal")) {
       setChatComponent(
         <ChatEat
-          character={playList[playIndex].option}
+          character={character}
           onTextChange={setGuideText}
           setEat={setEat}
           category={Type}
@@ -72,15 +76,13 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
     } else if (Type === "hotel") {
       setChatComponent(
         <ChatStay
-          character={playList[playIndex].option}
+          character={character}
           onTextChange={setGuideText}
           setStay={setStay}
         />
       );
     } else if (Type === "attraction") {
-      setChatComponent(
-        <ChatDo character={playList[playIndex].option} setDo={setDo} />
-      );
+      setChatComponent(<ChatDo character={character} setDo={setDo} co={co} />);
     }
   }, [Type]);
 
@@ -91,6 +93,11 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
     });
     // 관광지, 음식, 호텔 분류 모델 리턴
     // food, hotel, attraction 중 하나 받아옴
+  };
+
+  const handleEnd = () => {
+    console.log("Next button clicked");
+    navigate(`/end`);
   };
 
   return (
@@ -126,6 +133,9 @@ const VideoPlayer = ({ setEat, setStay, setDo, playList }) => {
             />
             <button type="submit">다음</button>
           </form>
+          <button className="end-button" onClick={handleEnd}>
+            가이드 종료하기
+          </button>
         </div>
       )}
 

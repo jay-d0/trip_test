@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ChatEatInput = ({ onSendMessage, setEat }) => {
+const ChatEatInput = ({ onSendMessage }) => {
   const [message, setMessage] = useState("");
 
   const handleInputChange = (event) => {
@@ -8,13 +8,6 @@ const ChatEatInput = ({ onSendMessage, setEat }) => {
   };
 
   const handleSubmit = (event) => {
-    /* communicate.post('/food',
-    { q,
-      A,
-      pers_price
-    }).then((res) => {
-    setEat(res.data);
-    })*/
     event.preventDefault();
     if (message.trim() !== "") {
       onSendMessage(message);

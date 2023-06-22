@@ -10,12 +10,14 @@ import OptionsEat from "./pages/Options/OptionsEat";
 import OptionsStay from "./pages/Options/OptionsStay";
 import VideoPlayer from "./pages/Video/VideoPlayer";
 import Cancel from "./pages/Cancel/Cancel";
+import End from "./pages/End/End";
 
 function App() {
   const [Do, setDo] = useState([]);
   const [Eat, setEat] = useState([]);
   const [Stay, setStay] = useState([]);
   const [playList, setPlayList] = useState([]);
+  const [co, setCo] = useState([48.8640152, 2.3503204]);
 
   const updatePlayList = (updatedPlayList) => {
     setPlayList(updatedPlayList);
@@ -30,7 +32,9 @@ function App() {
         <Route path="/:character/airport" element={<Airport />} />
         <Route
           path="/:character/cancel"
-          element={<Cancel setDo={setDo} setEat={setEat} setStay={setStay} />}
+          element={
+            <Cancel setDo={setDo} setEat={setEat} setStay={setStay} co={co} />
+          }
         />
         <Route
           path="/:character/options/do"
@@ -38,7 +42,9 @@ function App() {
         />
         <Route
           path="/:character/options/eat"
-          element={<OptionsEat Eat={Eat} setPlayList={updatePlayList} />}
+          element={
+            <OptionsEat Eat={Eat} setPlayList={updatePlayList} setCo={setCo} />
+          }
         />
         <Route
           path="/:character/options/stay"
@@ -52,9 +58,11 @@ function App() {
               setEat={setEat}
               setStay={setStay}
               playList={playList}
+              co={co}
             />
           }
         />
+        <Route path="/end" element={<End />} />
       </Routes>
     </div>
   );

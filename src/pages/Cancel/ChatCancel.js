@@ -9,7 +9,14 @@ import communicate from "../../communicate";
 
 import "../../css/ChatScreen.css";
 
-const ChatCancel = ({ character, setGuideText, setEat, setStay, setDo }) => {
+const ChatCancel = ({
+  character,
+  setGuideText,
+  setEat,
+  setStay,
+  setDo,
+  co,
+}) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const navigate = useNavigate();
@@ -24,7 +31,12 @@ const ChatCancel = ({ character, setGuideText, setEat, setStay, setDo }) => {
   };
 
   const cancelQuestions = [
-    "호텔의 예약이 취소되었습니다. 다음으로 무엇을 할까요?",
+    [
+      "큰일났습니다!",
+      "파리가 아니라 니스에 있는 ‘호텔 에펠 켄싱턴’ 지점을 예약하셨네요.",
+      "지금 파리 지점은 모두 방이 찼다고 합니다.",
+      "어떻게 할까요?",
+    ],
   ];
 
   useEffect(() => {
@@ -63,7 +75,7 @@ const ChatCancel = ({ character, setGuideText, setEat, setStay, setDo }) => {
       );
       setShowChatScreen(false);
     } else if (category === "attraction") {
-      setChatComponent(<ChatDo character={character} setDo={setDo} />);
+      setChatComponent(<ChatDo character={character} setDo={setDo} co={co} />);
       setShowChatScreen(false);
     }
   }, [category]);
@@ -100,7 +112,11 @@ const ChatCancel = ({ character, setGuideText, setEat, setStay, setDo }) => {
           {/* 현재 질문 및 input */}
           {questionIndex < cancelQuestions.length && (
             <div className="question">
-              <p>{cancelQuestions[questionIndex]}</p>
+              <p>
+                {cancelQuestions[questionIndex].map((token) => {
+                  return <div>{token}</div>;
+                })}
+              </p>
               <ChatCancelInput
                 onSendMessage={handleSendMessage}
                 onTextChange={setGuideText}

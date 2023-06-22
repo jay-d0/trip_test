@@ -1,41 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import "../../css/Options.css";
 
-const OptionsEat = ({ Eat, setPlayList, category }) => {
+const OptionsEat = ({ Eat, setPlayList, setCo }) => {
   const navigate = useNavigate();
   const { character } = useParams();
-
-  const characters = [
-    {
-      name: "민성우",
-      style: "먹는 것에 돈을 아끼지 않는다.",
-      img_url:
-        "https://w7.pngwing.com/pngs/390/806/png-transparent-rilakkuma-kakaotalk-kakao-friends-south-korea-kakaofriends-sticker-desktop-wallpaper-snout-thumbnail.png",
-    },
-    {
-      name: "박유찬",
-      style: "박물관과 미술관을 좋아한다.",
-      img_url:
-        "https://e7.pngegg.com/pngimages/982/1017/png-clipart-kakaotalk-kakao-friends-sticker-line-ryan-smiley-sticker.png",
-    },
-    {
-      name: "서우석",
-      style: "현지인들과 어울리기를 좋아한다.",
-      img_url:
-        "https://e7.pngegg.com/pngimages/825/741/png-clipart-kakaotalk-kakao-friends-sticker-iphone-iphone-electronics-smiley.png",
-    },
-  ];
-
-  const selectedCharacter = characters.find((char) => char.name === character);
+  // const [hover, setHover] = useState(0);
 
   const [optionsData, setOptionsData] = useState({});
 
-  const handleDataUpdate = () => {
+  const handleDataUpdate = useCallback(() => {
     const unpackedOptions = {};
     Eat.forEach((place) => {
-      unpackedOptions[place.key] = place.title;
+      unpackedOptions[place.key] = [place.title, [place.lat, place.lng]];
     }); // 'place' 항목의 'key'를 객체의 키로, 'title'을 객체의 값으로 할당
 
     setOptionsData(unpackedOptions);
@@ -43,18 +21,18 @@ const OptionsEat = ({ Eat, setPlayList, category }) => {
     // VideoPlayer.js의 playList 업데이트 (App.js에 업데이트 되어 있음)
     const updatedPlayList = Eat.map((place) => {
       return {
-        option: place.key,
+        option: `${encodeURIComponent(place.key)}`,
         url: `/videos/${place.key}.mp4`,
         startTime: 1,
         endTime: 5,
       };
     });
     setPlayList(updatedPlayList);
-  };
+  }, [Eat]);
 
   useEffect(() => {
     handleDataUpdate();
-  }, [Eat, setPlayList]); // Eat 배열이 변경될 때마다 handleDataUpdate 함수 호출
+  }, []); // Eat 배열이 변경될 때마다 handleDataUpdate 함수 호출
 
   const handleOptionClick = (option) => {
     navigate(
@@ -63,13 +41,18 @@ const OptionsEat = ({ Eat, setPlayList, category }) => {
   };
 
   const renderOptions = () => {
-    return Object.entries(optionsData).map(([option, label]) => (
+    return Object.entries(optionsData).map(([option, arr]) => (
       <button
         key={option}
         className="option-button"
-        onClick={() => handleOptionClick(option)}
+        onClick={() => {
+          handleOptionClick(option);
+          setCo(arr[1]);
+        }}
+        // onMouseOver={setHover(1)}
+        // onMouseLeave={setHover(0)}
       >
-        {label}
+        {/* {hover ? option : } */ arr[0]}
       </button>
     ));
   };

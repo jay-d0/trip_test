@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ChatMessage from "./ChatMessage";
 import ChatStayInput from "./ChatStayInput";
 
-import '../../css/ChatScreen.css';
+import "../../css/ChatScreen.css";
 
 const ChatStay = ({ character, onTextChange, setStay }) => {
   const [messages, setMessages] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
+
   const navigate = useNavigate();
 
   const handleSendMessage = (message) => {
@@ -16,17 +16,13 @@ const ChatStay = ({ character, onTextChange, setStay }) => {
     setQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
-  const handleTextChange = (text) => {
-    onTextChange(text); // Call the onTextChange prop
-  };
+  const videoStayQuestions = ["어떤 호텔로 갈까요?"];
 
-  const videoStayQuestions = [
-    "어떤 호텔로 갈까요?",
-  ];
-
-  if (questionIndex === videoStayQuestions.length) {
-    onTextChange("");
-  }
+  useEffect(() => {
+    if (questionIndex === videoStayQuestions.length) {
+      onTextChange("");
+    }
+  }, [questionIndex]);
 
   const handleNext = () => {
     console.log("Next button clicked");
@@ -46,7 +42,11 @@ const ChatStay = ({ character, onTextChange, setStay }) => {
       {questionIndex < videoStayQuestions.length && (
         <div className="question">
           <p>{videoStayQuestions[questionIndex]}</p>
-          <ChatStayInput onSendMessage={handleSendMessage} onTextChange={handleTextChange} setStay={setStay}/>
+          <ChatStayInput
+            onSendMessage={handleSendMessage}
+            character={character}
+            setStay={setStay}
+          />
         </div>
       )}
 

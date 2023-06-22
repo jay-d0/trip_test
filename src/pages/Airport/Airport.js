@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../css/Airport.css";
 import ReactPlayer from "react-player";
 import ChatAirport from "./ChatAirport";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Airport = () => {
   const { character } = useParams();
